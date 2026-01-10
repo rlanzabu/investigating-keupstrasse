@@ -1,10 +1,35 @@
-body {
-    font-family: sans-serif;
-    background-color: #f5f5f5;
+body, html {
+    margin: 0;
+    padding: 0;
 }
-#svgContainer {
-    position: fixed;
-    top: 100px;   /* distance from the top */
-    left: 50px;   /* distance from the left */
-    z-index: 10;  /* ensures it stays above other elements */
+
+.main-container {
+    display: flex; /* Creates the horizontal split */
+    width: 100%;
 }
+
+.side {
+    flex: 1; /* Each side takes exactly 50% width */
+}
+
+.object {
+    height: 100vh; /* Each object takes up exactly one full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Make sure the SVGs scale to fit their container */
+object {
+    max-width: 80%;
+    max-height: 80%;
+    pointer-events: all; /* Ensures you can still interact with the SVG content */
+}
+
+/* Optional: Mirror the right side visually */
+.right object {
+    transform: scaleX(-1);
+}
+
+
