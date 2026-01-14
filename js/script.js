@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger);
     }
 // javascript
-// Insert this at the end of the existing `document.addEventListener('DOMContentLoaded', ...)`
-// in `js/script.js`, after the setupObjectAnimation(...) calls.
 
     if (typeof ScrollTrigger !== 'undefined') {
         console.log('ScrollTrigger is loaded');
@@ -94,7 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
             setupObjectAnimation(obj.id, { scaleUp: 1.2, duration: 0.5 });
         }
     });*/
-
 });
-
 
