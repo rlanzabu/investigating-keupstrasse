@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger);
     }
 // javascript
-// Insert this at the end of the existing `document.addEventListener('DOMContentLoaded', ...)`
-// in `js/script.js`, after the setupObjectAnimation(...) calls.
 
     if (typeof ScrollTrigger !== 'undefined') {
         console.log('ScrollTrigger is loaded');
@@ -34,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function setupObjectAnimation(objectId, { scaleUp = 1.15, duration = 0.4 } = {}) {
+    function setupObjectAnimation(objectId, mirrored, { scaleUp = 1.15, side, duration = 0.4 } = {}) {
         const obj = document.getElementById(objectId);
         if (!obj) return;
 
@@ -49,10 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             target.addEventListener('mouseenter', () => {
-                gsap.to(target, { scale: scaleUp, duration, transformOrigin: '50% 50%' });
+
+                if (!mirrored) {
+                    gsap.to(target, { scaleX: scaleUp, scaleY: 1.15, duration, transformOrigin: '50% 50%' });
+
+                } else {
+                    gsap.to(target, { scaleX: 1.15, scaleY: -1.15, duration, transformOrigin: '50% 50%' });
+                }
             });
+
             target.addEventListener('mouseleave', () => {
-                gsap.to(target, { scale: 1, duration: Math.min(0.3, duration) });
+
+                if (!mirrored) {
+                    gsap.to(target, { scale: 1, duration: Math.min(0.3, duration) });
+
+                } else {
+                    gsap.to(target, { scaleX: 1, scaleY: -1, duration: Math.min(0.3, duration) });
+                }
+
             });
         };
 
@@ -62,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const svg = obj.contentDocument && obj.contentDocument.querySelector('svg');
             const target = svg || obj; // use inner svg when available, otherwise animate the <object>
             initTarget(target, obj);
+
+
         };
 
         // If already loaded (e.g. cached), call handler immediately; otherwise wait for load
@@ -79,22 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    setupObjectAnimation('cameraSvg', { scaleUp: 1.5, duration: 0.5 });
-    setupObjectAnimation('mySvg2-left', { scaleUp: 1.15, duration: 0.5 });
-    setupObjectAnimation('mySvg2-right', { scaleUp: 1.5, duration: 0.5 });
+    setupObjectAnimation('cameraSvg', false, { scaleUp: 1.15, duration: 0.5 });
+    setupObjectAnimation('mySvg2-left', false, false, { scaleUp: 1.15, duration: 0.5 });
+    setupObjectAnimation('mySvg2-right',true, true, { scaleUp: 1.15, duration: 0.5 });
 
     /*const allObjects = document.querySelectorAll('object');
 
 
     allObjects.forEach((obj) => {
-        // We pass the ID of the current object in the loop
+
         // If the object doesn't have an ID, we can use the element itself
-        // (though your function is currently written to expect an ID string)
         if (obj.id) {
             setupObjectAnimation(obj.id, { scaleUp: 1.2, duration: 0.5 });
         }
     });*/
-
 });
-
 

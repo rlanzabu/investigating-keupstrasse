@@ -30,7 +30,6 @@ object {
 /* Optional: Mirror the right side visually*/
 .right object {
     transform: scaleX(-1);
-    display: inline-block;
 }
 .large-svg {
     width: 120%;
