@@ -1,39 +1,48 @@
-body, html {
-    margin: 0;
-    padding: 0;
+
+#scrolly-section {
+    position: relative;
 }
 
-.main-container {
-    display: flex; /* Creates the horizontal split */
-    width: 100%;
-}
-
-.side {
-    flex: 1; /* Each side takes exactly 50% width */
-}
-
-.object {
-    height: 100vh; /* Each object takes up exactly one full screen height */
+.stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    overflow: hidden;
+    z-index: 1; /* Behind the text triggers if preferred, or in front */
 }
 
-/* Make sure the SVGs scale to fit their container */
-object {
-    width: 80%;
-    height: 80%;
-    pointer-events: all; /* Ensures you can still interact with the SVG content */
+.character {
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-/* Optional: Mirror the right side visually*/
-.right object {
-    transform: scaleX(-1);
+.right-char object {
+    transform: scaleX(-1); /* Mirror the right person */
 }
-.large-svg {
-    width: 120%;
-    /* width: 1200px; */
+
+/* The invisible triggers that drive the conversation */
+.step {
+    height: 80vh; /* Spaces out the conversation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    pointer-events: none; /* Let clicks pass through to SVGs */
+}
+
+/* Speech Bubble Styling */
+.bubble {
+    opacity: 0;
+    background: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 20px;
+    min-height: 40px;
 }
 
 
