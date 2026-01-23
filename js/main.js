@@ -41,5 +41,64 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(targetBubble, { opacity: 0, y: 0 });
         gsap.to(targetChar, { scale: 1, duration: 0.3 });
     }
+
+    // Objeto con la información de cada personaje
+    const characterRegistry = {
+        'left': {
+            name: "Hasan Yildirim",
+            age: "--",
+            role: "Friseur",
+            desc: "Aktenauszug: Im Friseurgeschäft Keupstraße 29 fielen den Einsatztrupp-Beamten\n"
+                + "in der Vergangenheit Kunden auf,\n" +
+                "die dem äußeren Eindruck nach,\n"
+                + "der türkischen Türsteher Szene\n" +
+                "angehören."
+
+        },
+        'right': {
+            name: "Özcan Yildirim",
+            age: "--",
+            role: "Inhaber des Haarstudios Özcan",
+            desc: "Aus den Ermittlungsakten: Vor dem Friseurgeschäft\n" +
+                "wurde Herr Özcan Yildirim festgestellt.In einer ersten informellen Befragung\n" +
+                "wurde er durch den Beamten P. befragt, ob es Bedrohungen\n" +
+                "zu seinem Nachteil gegeben hat."
+        }
+    };
+
+    const panel = document.getElementById('info-panel');
+    const closeBtn = document.getElementById('close-btn');
+
+    function showDetails(who) {
+        const data = characterRegistry[who];
+
+        // Rellenar el panel con la info del objeto
+        document.getElementById('p-name').textContent = data.name;
+        document.getElementById('p-age').textContent = data.age;
+        document.getElementById('p-role').textContent = data.role;
+        document.getElementById('p-desc').textContent = data.desc;
+
+        // Mostrar el panel
+        panel.classList.add('is-visible');
+    }
+
+// Eventos de click específicos para los SVG
+    charL.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita interferencias
+        showDetails('left');
+    });
+
+    charR.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showDetails('right');
+    });
+
+// Cerrar el panel
+    closeBtn.addEventListener('click', () => {
+        panel.classList.remove('is-visible');
+    });
+
+
+
 });
 

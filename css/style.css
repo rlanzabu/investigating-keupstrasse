@@ -50,7 +50,63 @@
     padding: 10px;
     margin-top: 20px;
     min-height: 40px;
-    width: 500px;
+    width: 450px;
 }
 
+
+.info-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    z-index: 2000;
+    transform: translateX(-100%); /* Oculto por defecto */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-right: 1px solid #333;
+    padding: 0;
+}
+
+.info-sidebar.is-visible {
+    transform: translateX(0); /* Se muestra al hacer click */
+}
+
+.close-area {
+    width: 100%;
+    background: #007c80; /* Color púrpura de tu captura */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.panel-content { padding: 20px; font-family: sans-serif; }
+.data-row { margin: 10px 0; font-size: 0.9em; }
+
+/* Aseguramos que solo el SVG reciba el click */
+.left-char, .right-char { cursor: pointer; pointer-events: all; }
+
+.active-character {
+    /* Paso 1: Forzamos al navegador a renderizar el SVG como una sola capa */
+    isolation: isolate;
+
+    /* Paso 2: Aplicamos el filtro al contenedor, no a los elementos internos */
+    filter: drop-shadow(0 0 10px #ffd700);
+
+    /* Paso 3: Aseguramos que el SVG interno sea tratado como un bloque sólido */
+    paint-order: markers fill stroke;
+}
+
+/* Paso 4: Evitamos que partes internas del SVG hereden filtros extra */
+.active-character svg * {
+    filter: none !important;
+}
+/* Opcional: Cursor para indicar que es clickeable */
+.left-char, .right-char {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
 
