@@ -14,13 +14,20 @@
 }
 
 .character {
-    width: 30%;
+    /* Increase this percentage to give the SVG more "room" to grow */
+    width: 45%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
-.right-char object {
-    transform: scaleX(-1); /* Mirror the right person */
+.character object {
+    /* Change 100% to a larger fixed pixel value or a larger percentage */
+    width: 700px; /* Adjust this number until you like the size */
+    height: auto;
+    transform: none;
 }
 
 /* The invisible triggers that drive the conversation */
@@ -43,6 +50,7 @@
     padding: 10px;
     margin-top: 20px;
     min-height: 40px;
+    width: 500px;
 }
 
 
