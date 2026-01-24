@@ -50,7 +50,7 @@
     padding: 10px;
     margin-top: 20px;
     min-height: 40px;
-    width: 450px;
+    width: 400px;
 }
 
 
@@ -94,7 +94,7 @@
     isolation: isolate;
 
     /* Paso 2: Aplicamos el filtro al contenedor, no a los elementos internos */
-    filter: drop-shadow(0 0 10px #ffd700);
+    filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.39));
 
     /* Paso 3: Aseguramos que el SVG interno sea tratado como un bloque sólido */
     paint-order: markers fill stroke;
@@ -108,5 +108,16 @@
 .left-char, .right-char {
     cursor: pointer;
     transition: transform 0.2s ease;
+}
+/* Personaje de la izquierda: mover a la derecha hacia el centro */
+.left-char {
+    transform: translateX(15%); /* Ajusta este % para acercarlo más o menos */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Personaje de la derecha: mover a la izquierda hacia el centro */
+.right-char {
+    transform: translateX(-15%); /* Ajusta este % para acercarlo más o menos */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
