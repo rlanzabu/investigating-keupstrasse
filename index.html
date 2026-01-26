@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <title>My First Web Page</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Köln-Mülheim, 2004, 9. Juni </h1>
-<p>This is my first web page.</p>
-
+<div class="header-container">
+  <h1>Köln-Mülheim, 2004, 9. Juni</h1>
+  <p>Forensik kollektiver Erinnerung</p>
+</div>
 
 <script src="js/gsap.min.js"></script>
 <script src="js/ScrollTrigger.min.js"></script>
@@ -17,25 +19,51 @@
 
 
 <div id="scrolly-section">
-  <div class="stage">
-    <div class="character left-char">
-      <object id="char-l" data="images/hYildirim.svg" type="image/svg+xml"></object>
-      <div class="bubble" id="bubble-l"></div>
+
+  <section class="scene">
+    <div class="stage">
+      <div class="character left-char" data-id="hasan">
+        <object data="images/hYildirim.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
+      <div class="character right-char" data-id="ozcan">
+        <object data="images/oYildirim.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
     </div>
 
-    <div class="character right-char">
-      <object id="char-r" data="images/oYildirim.svg" type="image/svg+xml"></object>
-      <div class="bubble" id="bubble-r"></div>
+    <div class="script">
+      <div class="step" data-who="left" data-text="In diesem Schockzustand realisiert man nichts."></div>
+      <div class="step" data-who="right" data-text="Doch für uns war das erst der Anfang."></div>
+      <div class="step" data-who="left" data-text="Als ich nach vorne kam, wurde mir das Ausmaß der Explosion bewusst."></div>
+      <div class="step" data-who="right" data-text="Ich fühle mich natürlich noch schockiert
+        von der gestrigen Tat. Wenn ich die Augen schließe, sehe ich noch die Bilder von gestern."></div>
+
+
     </div>
-  </div>
+  </section>
 
-  <div class="script">
-    <div class="step" data-who="left" data-text="In diesem Schockzustand realisiert man nichts."></div>
-    <div class="step" data-who="right" data-text="Doch für uns war das erst der Anfang. Die Bombe war explodiert."></div>
-    <div class="step" data-who="left" data-text="Als ich nach vorne kam, wurde mir das Ausmaß der Explosion bewusst."></div>
-    <div class="step" data-who="right" data-text=" Und es traf uns hart. Zum Glück kam niemand um. Doch die Absicht dahinter war, einen Massenmord zu begehen. Dass niemand dabei umkam, war ein großes Wunder."></div>
-  </div>
+  <section class="scene">
+    <div class="stage">
+      <div class="character left-char" data-id="testigo1">
+        <object data="images/abdullah.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
+      <div class="character right-char" data-id="testigo2">
+        <object data="images/fr.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
+    </div>
 
+    <div class="script">
+      <div class="step" data-who="left" data-text="Die Wunden sind geheime, ich spüre keine körperlichen
+        Schmerzen mehr, aber die seelischen Schmerzen, die wir erlitten haben. Die sind geblieben!"></div>
+      <div class="step" data-who="right" data-text="Es gab zwei Bomben. Die eine, die hatte diese Wucht
+        mit den Nägeln, die da drin waren, und die andere war einfach die Justiz, das System, der Rechtsstaat,
+        der nicht funktioniert hat."></div>
+    </div>
+
+  </section>
   <div id="info-panel" class="info-sidebar">
     <button id="close-btn" class="close-area">CLOSE</button>
     <div class="panel-content">
@@ -45,7 +73,14 @@
       <hr>
       <p id="p-desc">Información detallada sobre el personaje.</p>
     </div>
+    </div>
   </div>
+
+  <div class="context-box" id="info-1">
+    <p>Am 9. Juni 2004 explodierte in der Kölner Keupstraße, einem Zentrum türkischen Geschäftslebens, eine Nagelbombe und verletzte 22 Menschen. Durch eine multiperspektivische Analyse von episodischer und semantischer Erinnerung untersucht das Projekt, wie Wahrheit jenseits institutioneller Archive sichtbar wird und welche Verantwortung daraus für die deutsche Gesellschaft erwächst.</p>
+  </div>
+
+
 </div>
 
 
