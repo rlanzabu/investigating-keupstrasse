@@ -1,3 +1,25 @@
+.header-container {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(213, 210, 210, 0.25); /* Un fondo muy suave para que resalte */
+}
+
+h1 {
+
+    font-size: 3rem;
+    color: rgba(27, 26, 26, 0.73);
+    margin-bottom: 10px;
+    letter-spacing: -1px; /* Acerca un poco las letras para un look premium */
+}
+
+p {
+    font-family: 'Inter', sans-serif; /* Fuente limpia para el cuerpo */
+    font-size: 1.1rem;
+    color: rgba(159, 135, 10, 0.92);
+    max-width: 600px;
+    margin: 0 auto; /* Centra el párrafo si tiene ancho máximo */
+}
 
 #scrolly-section {
     position: relative;
@@ -25,7 +47,7 @@
 
 .character object {
     /* Change 100% to a larger fixed pixel value or a larger percentage */
-    width: 700px; /* Adjust this number until you like the size */
+    width: 600px; /* Adjust this number until you like the size */
     height: auto;
     transform: none;
 }
@@ -67,6 +89,9 @@
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-right: 1px solid #333;
     padding: 0;
+}
+.info-sidebar p {
+    color: rgba(216, 215, 212, 0.91); /* Blanco para que resalte sobre el fondo negro */
 }
 
 .info-sidebar.is-visible {
@@ -120,4 +145,71 @@
     transform: translateX(-15%); /* Ajusta este % para acercarlo más o menos */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
+.scene {
+    position: relative;
+    width: 100%;
+    /* Esto crea el espacio para que los textos hagan scroll */
+}
+
+/* Opcional: Para que los personajes aparezcan/desaparezcan suavemente */
+.stage {
+    transition: opacity 0.5s ease;
+}
+
+/* Evitamos que los pasos de una escena choquen con otra */
+.script {
+    padding-bottom: 20vh;
+}
+
+
+.context-box {
+    position: absolute; /* O 'fixed' si quieres que no se mueva con el scroll */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado perfecto */
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.95); /* Negro casi opaco */
+    color: white;
+    padding: 40px;
+    border-radius: 4px;
+    z-index: 100; /* Por encima de los personajes y burbujas */
+    opacity: 0; /* Oculta por defecto para animarla con GSAP */
+    pointer-events: none; /* Permite hacer clic a través de ella si es necesario */
+    font-family: 'Cormorant Garamond', serif; /* La fuente elegante que elegiste */
+    font-size: 1.5rem;
+    line-height: 1.4;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.context-box p {
+    margin-bottom: 20px;
+}
+
+.timeline-right {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    z-index: 10;
+    font-family: monospace;
+    text-align: right;
+}
+
+.time-marker {
+    display: flex;
+    flex-direction: column;
+    opacity: 0.3; /* Apagado por defecto */
+    transition: opacity 0.3s ease;
+}
+
+.time-marker.active {
+    opacity: 1; /* Se ilumina cuando el contenido está en pantalla */
+}
+
+.year { font-weight: bold; font-size: 1.2rem; }
+.place { font-size: 0.8rem; text-transform: uppercase; }
 
