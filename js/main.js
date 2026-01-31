@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
     const panel = document.getElementById('info-panel');
     const closeBtn = document.getElementById('close-btn');
+    const timeline = document.getElementById('timeline-container');
+    const toggleBtn = document.getElementById('toggle-timeline');
+
+    toggleBtn.addEventListener('click', () => {
+        timeline.classList.toggle('is-hidden');
+    });
 
     // 1. Registro de Personajes
     const characterRegistry = {
@@ -29,13 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LÓGICA DE LA LÍNEA DE TIEMPO (Solo Iluminar) ---
+    // --- LÓGICA DE LA LÍNEA DE TIEMPO CORREGIDA ---
     function updateTimelineMarker(markerId) {
-        const marker = document.getElementById(markerId);
-        if (!marker) return;
+        if (!markerId) return;
 
-        document.querySelectorAll('.time-marker').forEach(m => m.classList.remove('active'));
-        marker.classList.add('active');
+        const targetMarker = document.getElementById(markerId);
+        if (!targetMarker) return;
+
+        // 1. Identificar el grupo contenedor de esta fecha
+        const currentGroup = targetMarker.closest('.timeline-group');
+
+        // 2. Desactivar otros grupos y activar el actual
+        document.querySelectorAll('.timeline-group').forEach(group => {
+            if (group === currentGroup) {
+                group.classList.add('active-group');
+            } else {
+                group.classList.remove('active-group');
+            }
+        });
+
+        // 3. Resaltar la fecha específica dentro del grupo
+        currentGroup.querySelectorAll('.time-marker').forEach(m => {
+            if (m.id === markerId) {
+                m.classList.add('active');
+                gsap.to(m, { opacity: 1, x: 5, duration: 0.3 });
+            } else {
+                m.classList.remove('active');
+                gsap.to(m, { opacity: 0.3, x: 0, duration: 0.3 });
+            }
+        });
     }
 
     // 2. Lógica de Scroll (Conversación y Marcadores)
@@ -121,6 +149,66 @@ document.addEventListener('DOMContentLoaded', () => {
     createContextTrigger("#info-1", "#step-3"); // La caja 1 aparece cuando el texto 3 llega al centro
     createContextTrigger("#info-2", "#step-8"); // La caja 2 aparece en el texto 8
 
+    // Función para crear el mosaico iterando sobre el registro de personajes
+    function createMosaic() {
+        const container = document.getElementById('mosaic-grid-container');
+        if (!container) return;
+
+        container.innerHTML = ''; // Limpiamos el contenedor
+
+        // Mapeo manual de IDs a archivos SVG (asegúrate de que los nombres coincidan)
+        const imageMap = {
+            'hasan': 'hYildirim.svg',
+            'ozcan': 'oYildirim.svg',
+            'testigo1': 'abdullah.svg',
+            'testigo2': 'fr.svg'
+        };
+
+        const charKeys = Object.keys(characterRegistry);
+        const totalTiles = 30; // Cantidad total de cuadritos para el efecto "masa"
+
+        for (let i = 0; i < totalTiles; i++) {
+            // Usamos el operador % para rotar entre los personajes disponibles
+            const currentId = charKeys[i % charKeys.length];
+            const personData = characterRegistry[currentId];
+            const fileName = imageMap[currentId] || 'abdullah.svg';
+
+            const personDiv = document.createElement('div');
+            personDiv.className = 'person';
+            personDiv.dataset.id = currentId; // Importante para que el click funcione
+
+            // Colores aleatorios
+            const colors = ["rgb(0,124,128)", "#1b1a1a", "#ffd700"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Insertamos la estructura tipo Pudding
+            personDiv.innerHTML = `
+                <div class="backgroundColor" style="background: ${randomColor}; opacity: 0.4;"></div>
+                <img src="images/${fileName}" alt="${personData.name}">
+            `;
+
+            // Hacemos que cada cuadrito sea clickeable para abrir el panel lateral
+            personDiv.addEventListener('click', () => handleCharacterClick(personDiv));
+
+            container.appendChild(personDiv);
+        }
+    }
+
+// Ejecutar la creación
+    createMosaic();
+
+// Animación de entrada con ScrollTrigger
+    gsap.from(".person", {
+        scrollTrigger: {
+            trigger: "#mosaic-section",
+            start: "top 20%",
+        },
+        scale: 0,
+        opacity: 0,
+        stagger: 0.01,
+        duration: 0.5,
+        ease: "power2.out"
+    });
 
 });
 

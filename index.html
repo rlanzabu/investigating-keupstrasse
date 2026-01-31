@@ -17,23 +17,25 @@
 <script src="js/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
 
-<svg id="timeline-canvas" style="position:fixed; top:0; left:0; width:100%; height:100vh; pointer-events:none; z-index: 9999;">
-  <line id="connector-line" x1="0" y1="0" x2="0" y2="0"
-        style="stroke: #d1d1d1; stroke-width: 1; stroke-dasharray: 5,5; opacity: 0.6;" />
-</svg>
 
-<div class="timeline-right">
-  <div class="time-marker" id="marker-hasan">
-    <span class="year">2004</span>
-    <span class="place">Keupstraße</span>
+<div id="timeline-container">
+  <div class="timeline-group" id="group-1">
+    <div id="marker-hasan" class="time-marker">
+      Der Kuaför aus der Keupstraße
+      Ein Dokumentarfilm von Andreas Maus</div>
+    <div id="marker-ozcan" class="time-marker">09.06.2015 - 16:10</div>
   </div>
-  <div class="time-marker" id="marker-ozcan">
-    <span class="year">2004</span>
-    <span class="place">Köln</span>
+
+  <div class="timeline-group" id="group-2">
+    <div id="marker-fr" class="time-marker">09.06.2007 - 16:15</div>
+    <div id="marker-abdullah" class="time-marker">09.06.2007 - 16:15</div>
   </div>
 </div>
 
-
+<button id="toggle-timeline" class="source-button">
+  <span class="folder-tab"></span>
+  <span class="button-text">SOURCES</span>
+</button>
 
 <div id="scrolly-section">
 
@@ -51,7 +53,9 @@
     </div>
 
     <div id="info-1" class="context-box">
-      <p>En este momento, la calle Keupstraße era un hervidero de actividad comercial...</p>
+      <p>Am 9. Juni 2004 explodierte in der Kölner Keupstraße, einem Zentrum türkischen Geschäftslebens,
+        eine Nagelbombe und verletzte 22 Menschen. Dieses Projekt fragt, wie Ereignisse forensisch rekonstruierbar sind, wenn Beweismaterial systematisch zerstört,
+        verdrängt oder nicht anerkannt wurde.</p>
     </div>
 
     <div class="script">
@@ -77,15 +81,19 @@
       </div>
     </div>
     <div id="info-2" class="context-box">
-      <p>En este momento, la calle Keupstraße era un hervidero de actividad comercial...</p>
+      <p>Es geht von der Annahme aus, dass Erinnerung selbst eine Form von Evidenz darstellt: in individuellen Erfahrungen,
+        emotionalen Spuren und kollektiver Bedeutungsbildung. Durch eine multiperspektivische Analyse von episodischer und semantischer Erinnerung
+        untersucht das Projekt, wie Wahrheit jenseits institutioneller Archive sichtbar wird – und welche Verantwortung daraus für die deutsche Gesellschaft erwächst..</p>
     </div>
+
+
 
     <div class="script">
       <div class="step" data-who="left" data-text="Die Wunden sind geheime, ich spüre keine körperlichen
-        Schmerzen mehr, aber die seelischen Schmerzen, die wir erlitten haben. Die sind geblieben!"></div>
+        Schmerzen mehr, aber die seelischen Schmerzen, die wir erlitten haben. Die sind geblieben!" data-marker="marker-abdullah"></div>
       <div class="step" data-who="right" data-text="Es gab zwei Bomben. Die eine, die hatte diese Wucht
         mit den Nägeln, die da drin waren, und die andere war einfach die Justiz, das System, der Rechtsstaat,
-        der nicht funktioniert hat."></div>
+        der nicht funktioniert hat." data-marker="marker-fr"></div>
     </div>
 
   </section>
@@ -101,7 +109,29 @@
     </div>
   </div>
 
+<section id="mosaic-section">
 
+  <div class="visualContainer">
+
+    <div id="mosaic-grid-container" class="zoomContainer loaded">
+    </div>
+
+    <div id="mosaic-legend" class="mosaic-legend-pudding">
+      <div class="legend-header">DISTRIBUTION BY AGE</div>
+      <div class="legend-scale">
+        <div class="scale-item"><span class="dot" style="background:rgba(0,255,255,0.28)"></span> 0-20</div>
+        <div class="scale-item"><span class="dot" style="background:#007c80"></span> 21-40</div>
+        <div class="scale-item"><span class="dot" style="background:#ffd700"></span> 41+</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</section>
 
 
 </div>
