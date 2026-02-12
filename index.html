@@ -8,6 +8,8 @@
 </head>
 <body>
 
+
+
 <div class="header-container">
   <h1>Köln-Mülheim, 2004, 9. Juni</h1>
   <p>Forensik kollektiver Erinnerung</p>
@@ -16,6 +18,43 @@
 <script src="js/gsap.min.js"></script>
 <script src="js/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
+
+<div class="frame-container">
+  <div class="corner-svg left-corner">
+    <img src="images/frame.svg" alt="decoración izquierda">
+  </div>
+
+  <div class="corner-svg right-corner">
+    <img src="images/frameR.svg" alt="decoración derecha">
+  </div>
+</div>
+
+
+<header class="main-header">
+  <nav class="top-nav">
+    <button class="source-button" id="btn-research">
+      <span>01</span>
+      <small>RESEARCH</small>
+    </button>
+
+    <button class="source-button" id="toggle-timeline">
+      <span>02</span>
+      <small>SOURCES</small>
+    </button>
+
+    <button class="source-button" id="btn-orgs">
+      <span>03</span>
+      <small>ORGANIZATIONS</small>
+    </button>
+
+    <button class="source-button" id="btn-extra">
+      <span>04</span>
+      <small>ABOUT</small>
+    </button>
+  </nav>
+</header>
+
+
 
 
 <div id="timeline-container">
@@ -32,15 +71,18 @@
   </div>
 </div>
 
-<button id="toggle-timeline" class="source-button">
-  <span class="folder-tab"></span>
-  <span class="button-text">SOURCES</span>
-</button>
+
 
 <div id="scrolly-section">
 
   <section class="scene">
     <div class="stage">
+
+      <div class="floating-sidebar left-side">
+
+        <img src="images/nail.svg" class="extra-float f2" alt="deco">
+        <img src="images/nail.svg" class="extra-float f3" alt="deco">
+      </div>
 
       <div class="character left-char" data-id="hasan">
         <object data="images/hYildirim.svg" type="image/svg+xml"></object>
@@ -50,6 +92,13 @@
         <object data="images/oYildirim.svg" type="image/svg+xml"></object>
         <div class="bubble"></div>
       </div>
+
+      <div class="floating-sidebar right-side">
+        <img src="images/nail.svg" class="extra-float f4" alt="deco">
+        <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
+        <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
+      </div>
+
     </div>
 
     <div id="info-1" class="context-box">

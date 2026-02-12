@@ -7,11 +7,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeline = document.getElementById('timeline-container');
     const toggleBtn = document.getElementById('toggle-timeline');
 
-    toggleBtn.addEventListener('click', () => {
-        timeline.classList.toggle('is-hidden');
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Función para manejar los clics
+        const handleNavClick = (sectionName) => {
+            console.log(`Abriendo sección: ${sectionName}`);
+            // Aquí es donde luego pondremos la lógica para abrir los modales o el buscador
+        };
+
+        // Asignar eventos a cada botón
+        document.getElementById('btn-research').addEventListener('click', () => handleNavClick('Investigación'));
+        document.getElementById('btn-search').addEventListener('click', () => handleNavClick('Buscador'));
+        document.getElementById('btn-orgs').addEventListener('click', () => handleNavClick('Organizaciones'));
+        document.getElementById('btn-extra').addEventListener('click', () => handleNavClick('Acerca de'));
+
     });
 
-    // 1. Registro de Personajes
+
+    // Animación para los esquineros
+    gsap.to(".corner-svg", {
+        scale: 1.05,        // Crece un poquito
+        rotation: "random(-2, 2)", // Oscila levemente
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        stagger: 0.5
+    });
+
+// Opcional: Que aparezcan con el scroll
+    gsap.from(".corner-svg", {
+        scrollTrigger: {
+            trigger: ".frame-container",
+            start: "top center",
+        },
+        y: -50,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power2.out"
+    });
+
+
+    // Objetos laterales animados
+    document.querySelectorAll('.extra-float').forEach((obj, index) => {
+        // Flotación, Rotación y ESCALA
+        gsap.to(obj, {
+            y: "random(-90, 90)", // Movimiento vertical más amplio por ser más grandes
+            x: "random(-70, 70)",
+            rotation: "random(-25, 25)",
+            scale: "random(0.9, 1.2)", // Hace que el objeto "respire" acercándose
+            duration: "random(5, 8)",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.3
+        });
+
+        // Parallax de Scroll reforzado
+        gsap.to(obj, {
+            scrollTrigger: {
+                trigger: ".scene",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 2
+            },
+            // Los objetos más grandes (f2, f5) se mueven más rápido para acentuar el 3D
+            y: (index === 1 || index === 4) ? -300 : -150,
+            ease: "none"
+        });
+    });
+
+    // Registro de Personajes
     const characterRegistry = {
         'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug..." },
         'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten..." },
@@ -42,10 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetMarker = document.getElementById(markerId);
         if (!targetMarker) return;
 
-        // 1. Identificar el grupo contenedor de esta fecha
+        // Identificar el grupo contenedor de esta fecha
         const currentGroup = targetMarker.closest('.timeline-group');
 
-        // 2. Desactivar otros grupos y activar el actual
+        // Desactivar otros grupos y activar el actual
         document.querySelectorAll('.timeline-group').forEach(group => {
             if (group === currentGroup) {
                 group.classList.add('active-group');
@@ -54,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 3. Resaltar la fecha específica dentro del grupo
+        // Resaltar la fecha específica dentro del grupo
         currentGroup.querySelectorAll('.time-marker').forEach(m => {
             if (m.id === markerId) {
                 m.classList.add('active');
@@ -66,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Lógica de Scroll (Conversación y Marcadores)
+    //  Lógica de Scroll (Conversación y Marcadores)
     steps.forEach((step) => {
         const parentScene = step.closest('.scene');
         const charL = parentScene.querySelector('.left-char');

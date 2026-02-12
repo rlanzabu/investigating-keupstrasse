@@ -2,13 +2,13 @@
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
     padding: 50px 20px;
-    background-color: rgba(213, 210, 210, 0.25); /* Un fondo muy suave para que resalte */
+    background-color: rgb(27, 26, 26); /* Un fondo muy suave para que resalte */
 }
 
 h1 {
 
     font-size: 3rem;
-    color: rgba(27, 26, 26, 0.73);
+    color: rgb(241, 236, 236);
     margin-bottom: 10px;
     letter-spacing: -1px; /* Acerca un poco las letras para un look premium */
 }
@@ -20,6 +20,143 @@ p {
     max-width: 600px;
     margin: 0 auto; /* Centra el párrafo si tiene ancho máximo */
 }
+
+
+
+/* Contenedor para los esquineros*/
+.frame-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Importante para poder clickear lo que está debajo */
+    z-index: 10;
+    overflow: hidden;
+}
+
+.corner-svg {
+    position: absolute;
+    width:650px; /* Tamaño del esquinero */
+    opacity: 0.8;
+}
+
+.left-corner {
+    top: -50px;
+    left: -260px;
+    /* Ajusta la rotación si el SVG no viene orientado como esquina */
+    transform: rotate(0deg);
+}
+
+.right-corner {
+    top: -50px;
+    right: -260px;
+    /* Invertimos el SVG horizontalmente para que haga espejo */
+}
+
+.corner-svg img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+
+/* Contenedor principal del encabezado */
+.main-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* MODIFICADO: Reducimos el padding superior y eliminamos el inferior */
+    padding: 20px 0 0 0;
+    position: relative;
+    /* Asegura que no haya margen externo que empuje la escena */
+    margin-bottom: 0;
+}
+
+/* Fila de botones */
+.top-nav {
+    display: flex;
+    gap: 60px;
+    /* MODIFICADO: Reducimos el espacio entre los botones y el título */
+    margin-bottom: 20px;
+}
+
+/* Estilo individual del botón */
+.source-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'JetBrains Mono', monospace;
+    color: rgb(27, 26, 26);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efectos de interacción */
+.source-button:hover {
+    opacity: 0.5;
+    transform: translateY(-3px);
+}
+/* El número grande */
+.source-button span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* El texto pequeño debajo del número */
+.source-button small {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+
+
+.styled-title {
+    margin: 0; /* Elimina márgenes automáticos del H1 */
+    padding-bottom: 10px; /* Un pequeño aire antes de la escena, ajustable */
+}
+
+.scene {
+    margin-top: 0; /* Asegura que la escena no tenga margen superior */
+}
+
+
+.floating-sidebar {
+    position: absolute;
+    top: 0;
+    width: 300px; /* Ancho de la zona de flotación lateral */
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* Por detrás de los personajes para dar profundidad */
+}
+
+.left-side { left: -70px; }
+.right-side { right: -50px; }
+
+.extra-float {
+    position: absolute;
+    width: 250px; /* Ajusta el tamaño para que no sature */
+    opacity: 0.6;
+    filter: blur(1px); /* Ligero desenfoque para efecto 3D */
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+    will-change: transform; /* Mantiene la nitidez al escalar */
+}
+
+/* Personalización por objeto para mayor dinamismo */
+.f1 { top: 5%; width: 200px; opacity: 0.4; filter: blur(3px); }
+.f2 { top: 40%; width: 200px; opacity: 0.8; filter: blur(0px); z-index: 10; } /* El más grande y nítido */
+.f3 { top: 75%; width: 280px; opacity: 0.5; filter: blur(1px); }
+
+.f4 { top: 10%; width: 220px; opacity: 0.4; filter: blur(2px); }
+.f5 { top: 45%; width: 380px; opacity: 0.7; filter: blur(0px); } /* Objeto masivo a la derecha */
+.f6 { top: 80%; width: 240px; opacity: 0.5; }
 
 #scrolly-section {
     position: relative;
@@ -47,7 +184,7 @@ p {
 
 .character object {
     /* Change 100% to a larger fixed pixel value or a larger percentage */
-    width: 600px; /* Adjust this number until you like the size */
+    width: 650px; /* Adjust this number until you like the size */
     height: auto;
     transform: none;
 }
@@ -82,7 +219,7 @@ p {
     left: 0;
     width: 200px;
     height: 100vh;
-    background-color: #000;
+    background-color: rgb(27, 26, 26);
     color: #fff;
     z-index: 2000;
     transform: translateX(-100%); /* Oculto por defecto */
@@ -100,7 +237,7 @@ p {
 
 .close-area {
     width: 100%;
-    background: #007c80; /* Color púrpura de tu captura */
+    background: rgba(83, 135, 130, 0.99); /* Color púrpura de tu captura */
     color: white;
     border: none;
     padding: 10px;
@@ -119,7 +256,7 @@ p {
     isolation: isolate;
 
     /* Paso 2: Aplicamos el filtro al contenedor, no a los elementos internos */
-    filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.39));
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.47));
 
     /* Paso 3: Aseguramos que el SVG interno sea tratado como un bloque sólido */
     paint-order: markers fill stroke;
@@ -185,7 +322,6 @@ p {
 .context-box p {
     margin-bottom: 20px;
 }
-
 
 
 .year { font-weight: bold; font-size: 1.2rem; }
@@ -256,9 +392,8 @@ p {
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .source-button {
-    position: fixed;
     top: 20px;
-    right: 40px;
+    right: 600px;
     z-index: 100;
     background: transparent;
     border: none;
