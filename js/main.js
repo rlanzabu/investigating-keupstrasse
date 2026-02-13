@@ -16,15 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Asignar eventos a cada botón
+
         document.getElementById('btn-research').addEventListener('click', () => handleNavClick('Investigación'));
-        document.getElementById('btn-search').addEventListener('click', () => handleNavClick('Buscador'));
+        document.getElementById('toggle-timeline').addEventListener('click', () => handleNavClick('Buscador'));
         document.getElementById('btn-orgs').addEventListener('click', () => handleNavClick('Organizaciones'));
         document.getElementById('btn-extra').addEventListener('click', () => handleNavClick('Acerca de'));
 
     });
 
 
-    // Animación para los esquineros
+
+        // Animación para los esquineros
     gsap.to(".corner-svg", {
         scale: 1.05,        // Crece un poquito
         rotation: "random(-2, 2)", // Oscila levemente
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.5
     });
 
-// Opcional: Que aparezcan con el scroll
+        // Opcional: Que aparezcan con el scroll
     gsap.from(".corner-svg", {
         scrollTrigger: {
             trigger: ".frame-container",
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Objetos laterales animados
+        // Objetos laterales animados
     document.querySelectorAll('.extra-float').forEach((obj, index) => {
         // Flotación, Rotación y ESCALA
         gsap.to(obj, {
@@ -77,12 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Registro de Personajes
+
+    // --- 1. CONFIGURACIÓN DE DATOS ---
+    const imageMap = {
+        'hasan': 'hYildirim.svg',
+        'ozcan': 'oYildirim.svg',
+        'testigo1': 'abdullah.svg',
+        'testigo2': 'fr.svg'
+    };
+
+        // Registro de Personajes
     const characterRegistry = {
-        'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug..." },
-        'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten..." },
-        'testigo1': { name: "Abdullah", age: "40", role: "Vecino", desc: "Vio la explosión." },
-        'testigo2': { name: "Testigo B", age: "25", role: "Estudiante", desc: "Estaba cerca." }
+        'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug...",gender: 'masculino', present: true, memory: 'directa' },
+        'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten...",gender: 'masculino', present: false, memory: 'directa' },
+        'testigo1': { name: "Abdullah", age: "40", role: "Vecino", desc: "Vio la explosión.", gender: 'masculino', present: true, memory: 'indirecta' },
+        'testigo2': { name: "Testigo B", age: "25", role: "Estudiante", desc: "Estaba cerca.", gender: 'femenino', present: true, memory: 'directa' }
+    };
+
+        // Colores para atributos
+    const colorCodes = {
+        present: { true: "#ffd700", false: "#1b1a1a" },
+        memory: {
+            'directa': "rgb(0,124,128)",
+            'indirecta': "#8b0000",
+            'colectiva': "#4682b4"
+        },
+        gender: { 'masculino': "#2c3e50", 'femenino': "#e74c3c" }
     };
 
     // --- INTERACCIÓN CLICK (Aura y Panel) ---
@@ -176,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(targetChar, { scale: 1, duration: 0.3 });
     }
 
-    // 3. Eventos de Clic
+    // 3. Eventos de Click para Personajes (Panel Lateral)
     document.querySelectorAll('.character').forEach(char => {
         char.addEventListener('click', () => handleCharacterClick(char));
 
@@ -211,57 +233,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Aplicar a tus cajas
+    // Aplicar a las cajas
     createContextTrigger("#info-1", "#step-3"); // La caja 1 aparece cuando el texto 3 llega al centro
     createContextTrigger("#info-2", "#step-8"); // La caja 2 aparece en el texto 8
 
-    // Función para crear el mosaico iterando sobre el registro de personajes
-    function createMosaic() {
+
+// 1. Definición de criterios y sus etiquetas legibles
+    const criteriosConfig = [
+        { id: 'present', label: 'Present at the event' },
+        { id: 'memory', label: 'Type of memory' },
+        { id: 'gender', label: 'Gender' }
+    ];
+
+    let indiceActual = 0;
+
+// 2. Función crearMosaico actualizada (basada en la anterior)
+    function createMosaic(filtroCriterio) {
         const container = document.getElementById('mosaic-grid-container');
+        const labelText = document.getElementById('criterio-text');
+
         if (!container) return;
 
-        container.innerHTML = ''; // Limpiamos el contenedor
+        // Actualizar el texto descriptivo
+        const config = criteriosConfig.find(c => c.id === filtroCriterio);
+        if(labelText) labelText.innerText = config.label;
 
-        // Mapeo manual de IDs a archivos SVG (asegúrate de que los nombres coincidan)
-        const imageMap = {
-            'hasan': 'hYildirim.svg',
-            'ozcan': 'oYildirim.svg',
-            'testigo1': 'abdullah.svg',
-            'testigo2': 'fr.svg'
-        };
+        container.innerHTML = '';
 
         const charKeys = Object.keys(characterRegistry);
-        const totalTiles = 30; // Cantidad total de cuadritos para el efecto "masa"
+        const totalTiles = 30;
 
         for (let i = 0; i < totalTiles; i++) {
-            // Usamos el operador % para rotar entre los personajes disponibles
             const currentId = charKeys[i % charKeys.length];
             const personData = characterRegistry[currentId];
-            const fileName = imageMap[currentId] || 'abdullah.svg';
 
             const personDiv = document.createElement('div');
             personDiv.className = 'person';
-            personDiv.dataset.id = currentId; // Importante para que el click funcione
 
-            // Colores aleatorios
-            const colors = ["rgb(0,124,128)", "#1b1a1a", "#ffd700"];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            // Obtener color del mapa de colorCodes (definido en el paso anterior)
+            const valorCriterio = personData[filtroCriterio];
+            const assignedColor = colorCodes[filtroCriterio][valorCriterio] || "#ccc";
 
-            // Insertamos la estructura tipo Pudding
             personDiv.innerHTML = `
-                <div class="backgroundColor" style="background: ${randomColor}; opacity: 0.4;"></div>
-                <img src="images/${fileName}" alt="${personData.name}">
-            `;
+            <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
+            <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
+        `;
 
-            // Hacemos que cada cuadrito sea clickeable para abrir el panel lateral
+
             personDiv.addEventListener('click', () => handleCharacterClick(personDiv));
-
             container.appendChild(personDiv);
         }
     }
 
-// Ejecutar la creación
-    createMosaic();
+// 3. Evento para el botón de cambio
+    document.getElementById('cycle-criterio').addEventListener('click', () => {
+        // Avanzar al siguiente criterio
+        indiceActual = (indiceActual + 1) % criteriosConfig.length;
+        const nuevoCriterio = criteriosConfig[indiceActual].id;
+
+        // Volver a generar el mosaico con el nuevo color code
+        createMosaic(nuevoCriterio);
+    });
+
+// Ejecución inicial
+    createMosaic(criteriosConfig[indiceActual].id);
+
+
+
 
 // Animación de entrada con ScrollTrigger
     gsap.from(".person", {

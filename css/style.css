@@ -499,6 +499,38 @@ p {
 }
 
 
+.mosaic-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+#cycle-criterio {
+    background: #1b1a1a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+#cycle-criterio:hover {
+    background: rgba(255, 215, 0, 0.47);
+    color: #1b1a1a;
+}
+
+#current-label {
+    font-size: 0.9rem;
+    color: #00ffff;
+}
+
+
+
 
 
 
