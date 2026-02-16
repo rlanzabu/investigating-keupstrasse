@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'testigo1': 'abdullah.svg',
         'testigo2': 'fr.svg',
         'women': 'women.svg',
-        'schily': 'schily.svg'
+        'schily': 'schily.svg',
+        'man': 'man.svg',
+        'kleffner': 'kleffner.svg',
     };
 
     const characterRegistry = {
@@ -93,7 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'testigo1': { name: "Abdullah", age: "--", role: "Vecino", desc: "Vio la explosión.", gender: 'masculino', present: true, memory: 'indirecta' },
         'testigo2': { name: "Meral Şahin", age: "--", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "Estaba cerca.", gender: 'femenino', present: true, memory: 'directa' },
         'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Vieron a los sospechosos y escucharon la Explosion", gender: 'femenino', present: true, memory: 'directa' },
-        'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", desc: "Trabajó en la investigación.", gender: 'masculino', present: false, memory: 'colectiva' }
+        'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). ", desc: "Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", gender: 'masculino', present: false, memory: 'colectiva' },
+        'man': { name: "Anonymer Mann", age: "--", role: "Anonymer Zeuge", desc: "Vio a los sospechosos y escuchó la explosión", gender: 'masculino', present: true, memory: 'directa' },
+        'kleffner': { name: "Heike Kleffner", age: "60", role: "deutsche Journalistin und Autorin.", desc: "Von 2004 bis 2009 leitete sie die Mobile Beratung für Opfer rechter Gewalt in Sachsen-Anhalt." +
+                "Bis 2013 war sie Referentin der Fraktion" +
+                " Die Linke im Bundestag im NSU-Untersuchung-" +
+                "sausschuss.", gender: 'femenino', present: false, memory: 'directa' },
     };
 
     const colorCodes = {
