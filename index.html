@@ -8,7 +8,7 @@
 </head>
 <body>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
 <div class="header-container">
   <h1>Köln-Mülheim, 2004, 9. Juni</h1>
@@ -19,23 +19,18 @@
 <script src="js/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
 
-<div class="frame-container">
-  <div class="corner-svg left-corner">
-    <img src="images/frame.svg" alt="decoración izquierda">
-  </div>
-
-  <div class="corner-svg right-corner">
-    <img src="images/frameR.svg" alt="decoración derecha">
-  </div>
-</div>
 
 
 <header class="main-header">
+
+
+
   <nav class="top-nav">
     <button class="source-button" id="btn-research">
       <span>01</span>
       <small>RESEARCH</small>
     </button>
+
 
     <button class="source-button" id="toggle-timeline">
       <span>02</span>
@@ -55,19 +50,34 @@
 </header>
 
 
-
-
 <div id="timeline-container">
   <div class="timeline-group" id="group-1">
     <div id="marker-hasan" class="time-marker">
       Der Kuaför aus der Keupstraße
       Ein Dokumentarfilm von Andreas Maus</div>
-    <div id="marker-ozcan" class="time-marker">09.06.2015 - 16:10</div>
+    <div id="marker-ozcan" class="time-marker">Veröffentlichungsdatum: 27.10.2015</div>
   </div>
 
   <div class="timeline-group" id="group-2">
+    <div id="marker-women" class="time-marker">Offener Brief an Otto Schily
+      und den Bundes-Untersuchungsausschuss
+      Köln, 13.3.2013</div>
+    <div id="marker-schilly" class="time-marker">Diese Äußerung wurde am Abend des 10.06.2004 in der 20-Uhr-Ausgabe der "Tagesschau" ausgestrahlt.</div>
+  </div>
+
+  <div class="timeline-group" id="group-3">
     <div id="marker-fr" class="time-marker">09.06.2007 - 16:15</div>
     <div id="marker-abdullah" class="time-marker">09.06.2007 - 16:15</div>
+  </div>
+</div>
+
+<div class="frame-container">
+  <div class="corner-svg left-corner">
+    <img src="images/frame.svg" alt="decoración izquierda">
+  </div>
+
+  <div class="corner-svg right-corner">
+    <img src="images/frameR.svg" alt="decoración derecha">
   </div>
 </div>
 
@@ -117,6 +127,54 @@
 
     </div>
   </section>
+
+
+
+  <section class="scene">
+    <div class="stage">
+
+      <div class="floating-sidebar left-side">
+
+        <img src="images/nail.svg" class="extra-float f2" alt="deco">
+        <img src="images/nail.svg" class="extra-float f3" alt="deco">
+      </div>
+
+      <div class="character left-char" data-id="women">
+        <object data="images/women.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
+      <div class="character right-char" data-id="schily">
+        <object data="images/schily.svg" type="image/svg+xml"></object>
+        <div class="bubble"></div>
+      </div>
+
+      <div class="floating-sidebar right-side">
+        <img src="images/nail.svg" class="extra-float f4" alt="deco">
+        <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
+        <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
+      </div>
+
+    </div>
+
+
+    <div class="script">
+      <div class="step" data-who="left" data-text="Am 9. Juni 2004 war ich mit meinem 7-jährigen Sohn zuhause. Ich hörte einen lauten
+      Knall und dachte es sei ein Erdbeben." data-marker="marker-women"></div>
+      <div class="step" data-who="right" data-text="Die Erkenntnisse, die unsere Sicherheitsbehörden bisher gewonnen haben, deuten nicht auf einen terroristischen Hintergrund, sondern auf ein kriminelles Milieu" data-marker="marker-schilly"></div>
+      <div class="step" data-who="left" data-text="Nach zwei Stunden stürmte plötzlich die Polizei, ohne Klingeln, meine Wohnung. Sie brachen zwei Türen auf und durchsuchten meine Wohnung."></div>
+      <div class="step" data-who="right" data-text="aber die Ermittlungen sind noch nicht abgeschlossen, so dass ich eine abschließende Beurteilung dieser Ereignisse jetzt nicht vornehmen kann."></div>
+      <div class="step" data-who="left" data-text="Die Polizei sagte mir, dass ich bzw. mein Mann verdächtigt werden, eine Bombe gelegt zu haben. Als Grund gaben sie an, dass ich Kurdin sei und deswegen
+verdächtigt werde, mit der PKK zu tun zu haben."></div>
+
+
+    </div>
+  </section>
+
+
+
+
+
+
 
   <section class="scene">
     <div class="stage">
@@ -180,17 +238,40 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
 </section>
 
 
 </div>
+
+<main>
+  <section id="research-section" class="content-section">
+    <div class="section-container">
+      <h2>01 RESEARCH</h2>
+      <div class="visual-placeholder">
+        <img src="images/research-visual.svg" alt="Research">
+      </div>
+      <p>Contenido detallado de la investigación...</p>
+    </div>
+  </section>
+
+  <section id="sources-section" class="content-section">
+    <div class="section-container">
+      <h2>02 SOURCES</h2>
+    </div>
+  </section>
+
+  <section id="orgs-section" class="content-section">
+    <div class="section-container">
+      <h2>03 ORGANIZATIONS</h2>
+    </div>
+  </section>
+
+  <section id="about-section" class="content-section">
+    <div class="section-container">
+      <h2>04 ABOUT</h2>
+    </div>
+  </section>
+</main>
 
 
 </body>

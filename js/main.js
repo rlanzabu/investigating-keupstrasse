@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin); // Añadido ScrollToPlugin
 
 document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
@@ -7,29 +7,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeline = document.getElementById('timeline-container');
     const toggleBtn = document.getElementById('toggle-timeline');
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // --- NUEVA LÓGICA DE NAVEGACIÓN ---
+    const menuConfig = [
+        { btnId: 'btn-research', target: '#research-section' },
+        { btnId: 'toggle-timeline', target: '#sources-section' },
+        { btnId: 'btn-orgs', target: '#orgs-section' },
+        { btnId: 'btn-extra', target: '#about-section' }
+    ];
 
-        // Función para manejar los clics
-        const handleNavClick = (sectionName) => {
-            console.log(`Abriendo sección: ${sectionName}`);
-            // Aquí es donde luego pondremos la lógica para abrir los modales o el buscador
-        };
-
-        // Asignar eventos a cada botón
-
-        document.getElementById('btn-research').addEventListener('click', () => handleNavClick('Investigación'));
-        document.getElementById('toggle-timeline').addEventListener('click', () => handleNavClick('Buscador'));
-        document.getElementById('btn-orgs').addEventListener('click', () => handleNavClick('Organizaciones'));
-        document.getElementById('btn-extra').addEventListener('click', () => handleNavClick('Acerca de'));
-
+    menuConfig.forEach(item => {
+        const button = document.getElementById(item.btnId);
+        if (button) {
+            button.addEventListener('click', () => {
+                gsap.to(window, {
+                    duration: 1.5,
+                    scrollTo: {
+                        y: item.target,
+                        autoKill: true,
+                        offsetY: 30
+                    },
+                    ease: "power4.inOut"
+                });
+            });
+        }
     });
+    // --- FIN NAVEGACIÓN ---
 
-
-
-        // Animación para los esquineros
+    // Animación para los esquineros
     gsap.to(".corner-svg", {
-        scale: 1.05,        // Crece un poquito
-        rotation: "random(-2, 2)", // Oscila levemente
+        scale: 1.05,
+        rotation: "random(-2, 2)",
         duration: 5,
         repeat: -1,
         yoyo: true,
@@ -37,27 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.5
     });
 
-        // Opcional: Que aparezcan con el scroll
     gsap.from(".corner-svg", {
-        scrollTrigger: {
-            trigger: ".frame-container",
-            start: "top center",
-        },
-        y: -50,
+        y: -30,
         opacity: 0,
-        duration: 1.2,
+        duration: 1.5,
         ease: "power2.out"
     });
 
-
-        // Objetos laterales animados
+    // Objetos laterales animados
     document.querySelectorAll('.extra-float').forEach((obj, index) => {
-        // Flotación, Rotación y ESCALA
         gsap.to(obj, {
-            y: "random(-90, 90)", // Movimiento vertical más amplio por ser más grandes
+            y: "random(-90, 90)",
             x: "random(-70, 70)",
             rotation: "random(-25, 25)",
-            scale: "random(0.9, 1.2)", // Hace que el objeto "respire" acercándose
+            scale: "random(0.9, 1.2)",
             duration: "random(5, 8)",
             repeat: -1,
             yoyo: true,
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: index * 0.3
         });
 
-        // Parallax de Scroll reforzado
         gsap.to(obj, {
             scrollTrigger: {
                 trigger: ".scene",
@@ -73,30 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 end: "bottom top",
                 scrub: 2
             },
-            // Los objetos más grandes (f2, f5) se mueven más rápido para acentuar el 3D
             y: (index === 1 || index === 4) ? -300 : -150,
             ease: "none"
         });
     });
-
 
     // --- 1. CONFIGURACIÓN DE DATOS ---
     const imageMap = {
         'hasan': 'hYildirim.svg',
         'ozcan': 'oYildirim.svg',
         'testigo1': 'abdullah.svg',
-        'testigo2': 'fr.svg'
+        'testigo2': 'fr.svg',
+        'women': 'women.svg',
+        'schily': 'schily.svg'
     };
 
-        // Registro de Personajes
     const characterRegistry = {
-        'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug...",gender: 'masculino', present: true, memory: 'directa' },
-        'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten...",gender: 'masculino', present: false, memory: 'directa' },
-        'testigo1': { name: "Abdullah", age: "40", role: "Vecino", desc: "Vio la explosión.", gender: 'masculino', present: true, memory: 'indirecta' },
-        'testigo2': { name: "Testigo B", age: "25", role: "Estudiante", desc: "Estaba cerca.", gender: 'femenino', present: true, memory: 'directa' }
+        'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug...", gender: 'masculino', present: true, memory: 'directa' },
+        'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten...", gender: 'masculino', present: false, memory: 'directa' },
+        'testigo1': { name: "Abdullah", age: "--", role: "Vecino", desc: "Vio la explosión.", gender: 'masculino', present: true, memory: 'indirecta' },
+        'testigo2': { name: "Meral Şahin", age: "--", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "Estaba cerca.", gender: 'femenino', present: true, memory: 'directa' },
+        'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Vieron a los sospechosos y escucharon la Explosion", gender: 'femenino', present: true, memory: 'directa' },
+        'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", desc: "Trabajó en la investigación.", gender: 'masculino', present: false, memory: 'colectiva' }
     };
 
-        // Colores para atributos
     const colorCodes = {
         present: { true: "#ffd700", false: "#1b1a1a" },
         memory: {
@@ -107,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gender: { 'masculino': "#2c3e50", 'femenino': "#e74c3c" }
     };
 
-    // --- INTERACCIÓN CLICK (Aura y Panel) ---
     function handleCharacterClick(char) {
         document.querySelectorAll('.character').forEach(c => c.classList.remove('active-character'));
         char.classList.add('active-character');
@@ -123,26 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LÓGICA DE LA LÍNEA DE TIEMPO CORREGIDA ---
     function updateTimelineMarker(markerId) {
         if (!markerId) return;
-
         const targetMarker = document.getElementById(markerId);
         if (!targetMarker) return;
 
-        // Identificar el grupo contenedor de esta fecha
         const currentGroup = targetMarker.closest('.timeline-group');
-
-        // Desactivar otros grupos y activar el actual
         document.querySelectorAll('.timeline-group').forEach(group => {
-            if (group === currentGroup) {
-                group.classList.add('active-group');
-            } else {
-                group.classList.remove('active-group');
-            }
+            group.classList.toggle('active-group', group === currentGroup);
         });
 
-        // Resaltar la fecha específica dentro del grupo
         currentGroup.querySelectorAll('.time-marker').forEach(m => {
             if (m.id === markerId) {
                 m.classList.add('active');
@@ -154,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    //  Lógica de Scroll (Conversación y Marcadores)
     steps.forEach((step) => {
         const parentScene = step.closest('.scene');
+        if (!parentScene) return;
         const charL = parentScene.querySelector('.left-char');
         const charR = parentScene.querySelector('.right-char');
         const bubbleL = charL.querySelector('.bubble');
@@ -198,10 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(targetChar, { scale: 1, duration: 0.3 });
     }
 
-    // 3. Eventos de Click para Personajes (Panel Lateral)
     document.querySelectorAll('.character').forEach(char => {
         char.addEventListener('click', () => handleCharacterClick(char));
-
         const obj = char.querySelector('object');
         if (obj) {
             obj.addEventListener('load', () => {
@@ -218,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.active-character').forEach(c => c.classList.remove('active-character'));
     });
 
-    // Función para crear triggers de cajas de contexto rápidamente
     function createContextTrigger(boxId, triggerElement) {
         gsap.to(boxId, {
             scrollTrigger: {
@@ -233,12 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Aplicar a las cajas
-    createContextTrigger("#info-1", "#step-3"); // La caja 1 aparece cuando el texto 3 llega al centro
-    createContextTrigger("#info-2", "#step-8"); // La caja 2 aparece en el texto 8
+    createContextTrigger("#info-1", "#step-3");
+    createContextTrigger("#info-2", "#step-8");
 
-
-// 1. Definición de criterios y sus etiquetas legibles
     const criteriosConfig = [
         { id: 'present', label: 'Present at the event' },
         { id: 'memory', label: 'Type of memory' },
@@ -247,61 +229,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let indiceActual = 0;
 
-// 2. Función crearMosaico actualizada (basada en la anterior)
     function createMosaic(filtroCriterio) {
         const container = document.getElementById('mosaic-grid-container');
         const labelText = document.getElementById('criterio-text');
-
         if (!container) return;
 
-        // Actualizar el texto descriptivo
         const config = criteriosConfig.find(c => c.id === filtroCriterio);
         if(labelText) labelText.innerText = config.label;
 
         container.innerHTML = '';
-
         const charKeys = Object.keys(characterRegistry);
         const totalTiles = 30;
 
         for (let i = 0; i < totalTiles; i++) {
             const currentId = charKeys[i % charKeys.length];
             const personData = characterRegistry[currentId];
-
             const personDiv = document.createElement('div');
             personDiv.className = 'person';
-
-            // Obtener color del mapa de colorCodes (definido en el paso anterior)
             const valorCriterio = personData[filtroCriterio];
             const assignedColor = colorCodes[filtroCriterio][valorCriterio] || "#ccc";
 
             personDiv.innerHTML = `
-            <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
-            <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
-        `;
-
-
+                <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
+                <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
+            `;
             personDiv.addEventListener('click', () => handleCharacterClick(personDiv));
             container.appendChild(personDiv);
         }
     }
 
-// 3. Evento para el botón de cambio
-    document.getElementById('cycle-criterio').addEventListener('click', () => {
-        // Avanzar al siguiente criterio
-        indiceActual = (indiceActual + 1) % criteriosConfig.length;
-        const nuevoCriterio = criteriosConfig[indiceActual].id;
+    const cycleBtn = document.getElementById('cycle-criterio');
+    if (cycleBtn) {
+        cycleBtn.addEventListener('click', () => {
+            indiceActual = (indiceActual + 1) % criteriosConfig.length;
+            createMosaic(criteriosConfig[indiceActual].id);
+        });
+    }
 
-        // Volver a generar el mosaico con el nuevo color code
-        createMosaic(nuevoCriterio);
-    });
-
-// Ejecución inicial
     createMosaic(criteriosConfig[indiceActual].id);
 
-
-
-
-// Animación de entrada con ScrollTrigger
     gsap.from(".person", {
         scrollTrigger: {
             trigger: "#mosaic-section",
@@ -313,6 +279,5 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.5,
         ease: "power2.out"
     });
-
 });
 
