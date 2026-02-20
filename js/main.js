@@ -238,21 +238,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createMosaic(filtroCriterio) {
         const container = document.getElementById('mosaic-grid-container');
-        const labelText = document.getElementById('criterio-text');
         if (!container) return;
 
+        const labelText = document.getElementById('criterio-text');
         const config = criteriosConfig.find(c => c.id === filtroCriterio);
         if(labelText) labelText.innerText = config.label;
 
         container.innerHTML = '';
         const charKeys = Object.keys(characterRegistry);
-        const totalTiles = 30;
 
-        for (let i = 0; i < totalTiles; i++) {
+        for (let i = 0; i < 20; i++) {
             const currentId = charKeys[i % charKeys.length];
             const personData = characterRegistry[currentId];
             const personDiv = document.createElement('div');
             personDiv.className = 'person';
+            personDiv.dataset.id = currentId; // CRUCIAL: Añadimos el ID para el panel
+
             const valorCriterio = personData[filtroCriterio];
             const assignedColor = colorCodes[filtroCriterio][valorCriterio] || "#ccc";
 
@@ -260,11 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
                 <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
             `;
+
+            // Asignamos el evento de click que usa la misma lógica del panel
             personDiv.addEventListener('click', () => handleCharacterClick(personDiv));
             container.appendChild(personDiv);
         }
     }
-
     const cycleBtn = document.getElementById('cycle-criterio');
     if (cycleBtn) {
         cycleBtn.addEventListener('click', () => {

@@ -1,27 +1,40 @@
-.header-container {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400&display=swap');
 
-    font-family: 'Cormorant Garamond', serif;
+.header-container {
+    font-family: 'Inter', sans-serif;
     text-align: center;
-    padding: 50px 20px;
-    background-color: rgb(27, 26, 26); /* Un fondo muy suave para que resalte */
+    padding: 60px 20px;
+    background-color: #0d0d0d; /* Negro mate */
 }
 
 h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.0rem; /* Tamaño mucho más pequeño y controlado */
+    margin-bottom: 12px;
+    text-transform: uppercase;
 
-    font-size: 3rem;
-    color: rgb(241, 236, 236);
-    margin-bottom: 10px;
-    letter-spacing: -1px; /* Acerca un poco las letras para un look premium */
+    /* Espaciado EXTRA para elegancia */
+    letter-spacing: 12px;
+
+    /* Efecto Hueco muy fino */
+    color: transparent;
+    -webkit-text-stroke: 0.5px rgba(241, 236, 236, 0.8);
+
+    /* Para que el letter-spacing no descentre el texto (ajuste óptico) */
+    padding-left: 12px;
 }
 
 p {
-    font-family: 'Inter', sans-serif; /* Fuente limpia para el cuerpo */
-    font-size: 1.1rem;
-    color: rgba(159, 135, 10, 0.92);
-    max-width: 600px;
-    margin: 0 auto; /* Centra el párrafo si tiene ancho máximo */
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem; /* Párrafo más pequeño en armonía */
+    color: rgba(159, 135, 10, 0.8);
+    max-width: 500px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+    line-height: 1.5;
 }
-
 
 
 /* Contenedor para los esquineros*/
@@ -212,7 +225,7 @@ p {
     padding: 10px;
     margin-top: 20px;
     min-height: 40px;
-    width: 400px;
+    width: 370px;
 }
 
 
@@ -560,8 +573,96 @@ p {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
 
+:root {
+    --deep-black: #0a0a0a;  /* Negro casi puro */
+    --soft-white: #e4e4e4;  /* Blanco editorial */
+    --accent-gold: #c5a059; /* Un dorado apagado para detalles */
+    --ink-gray: #1a1a1a;    /* Para bloques de contraste */
+}
 
+.content-section {
+    background-color: var(--deep-black);
+    color: var(--soft-white);
+    font-family: 'Inter', sans-serif;
+    padding: 150px 10%;
+    border-bottom: 1px solid #222;
+    position: relative;
+    overflow: hidden;
+}
 
+.section-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem); /* Tamaño fluido */
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 50px;
+    /* Efecto original: Letras huecas */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--soft-white);
+    transition: 0.5s ease;
+}
 
+/* Cuando el usuario llega a la sección, el título se rellena */
+section:hover h2 {
+    color: var(--soft-white);
+}
+
+.section-container h2::before {
+    content: "SECTION";
+    display: block;
+    font-size: 0.8rem;
+    font-family: 'Inter';
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    -webkit-text-stroke: 0;
+}
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+}
+
+.section-container p {
+    grid-column: 1 / span 7; /* El texto ocupa el lado izquierdo */
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.8;
+    text-align: left;
+    border-left: 1px solid var(--accent-gold);
+    padding-left: 30px;
+}
+
+.visual-placeholder {
+    grid-column: 8 / span 5; /* La imagen flota a la derecha */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.visual-placeholder img {
+    width: 100%;
+    filter: grayscale(1) brightness(0.8) contrast(1.2);
+    transition: 0.8s filter;
+    border: 1px solid #333;
+}
+
+.visual-placeholder:hover img {
+    filter: grayscale(0) brightness(1);
+}
+.section-container::after {
+    content: attr(data-number); /* Necesitas añadir data-number="01" en tu HTML */
+    position: absolute;
+    right: -20px;
+    bottom: -50px;
+    font-size: 20rem;
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    color: rgba(255,255,255,0.03); /* Casi invisible */
+    z-index: 0;
+    pointer-events: none;
+}
 
