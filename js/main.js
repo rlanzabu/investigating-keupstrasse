@@ -87,20 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
         'schily': 'schily.svg',
         'man': 'man.svg',
         'kleffner': 'kleffner.svg',
+        'gün': 'gün.svg',
     };
 
     const characterRegistry = {
-        'hasan': { name: "Hasan Yildirim", age: "--", role: "Friseur", desc: "Aktenauszug...", gender: 'masculino', present: true, memory: 'directa' },
+        'hasan': { name: "Hasan Yildirim", age: "52", role: "Friseur", desc: "Geboren in Ankara, kam 1997 nach Deutschland. War bereits in der Türkei als Friseur tätig und arbeitet auch in Deutschland in diesem Beruf. Arbeitete etwa acht Jahre lang in der Keupstraße.", gender: 'masculino', present: true, memory: 'directa' },
         'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Aus den Ermittlungsakten...", gender: 'masculino', present: false, memory: 'directa' },
         'testigo1': { name: "Abdullah", age: "--", role: "Vecino", desc: "Vio la explosión.", gender: 'masculino', present: true, memory: 'indirecta' },
         'testigo2': { name: "Meral Şahin", age: "--", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "Estaba cerca.", gender: 'femenino', present: true, memory: 'directa' },
         'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Vieron a los sospechosos y escucharon la Explosion", gender: 'femenino', present: true, memory: 'directa' },
         'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). ", desc: "Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", gender: 'masculino', present: false, memory: 'colectiva' },
-        'man': { name: "Anonymer Mann", age: "--", role: "Anonymer Zeuge", desc: "Vio a los sospechosos y escuchó la explosión", gender: 'masculino', present: true, memory: 'directa' },
+        'man': { name: "Herr M.", age: "--", role: "Anonymer Zeuge", desc: "Die Person ist 50 Jahre alt und lebt seit 20 Jahren in Deutschland. Da sie nicht möchte, dass Rückschlüsse auf ihre Person gezogen werden können, gibt sie ihren Beruf nicht an.", gender: 'masculino', present: true, memory: 'directa' },
         'kleffner': { name: "Heike Kleffner", age: "60", role: "deutsche Journalistin und Autorin.", desc: "Von 2004 bis 2009 leitete sie die Mobile Beratung für Opfer rechter Gewalt in Sachsen-Anhalt." +
                 "Bis 2013 war sie Referentin der Fraktion" +
                 " Die Linke im Bundestag im NSU-Untersuchung-" +
                 "sausschuss.", gender: 'femenino', present: false, memory: 'directa' },
+        'gün': { name: "Gün", age: "--", role: "Psychotherapeut ", desc: "Studium der Psychologie an der Universität Köln sowie Ausbildung in Psychodrama und systemischer Beratung und Therapie. " +
+                "Vertreter der Migranten in der Kommunalen Gesundheitskonferenz. Sprecher des Arbeitskreises Migration und Psychiatrie im Landschaftsverband Rheinland. " +
+                "Mitglied des LVR-Kompetenzzentrums Migration. ", gender: 'masculino', present: false, memory: 'directa' },
     };
 
     const colorCodes = {
