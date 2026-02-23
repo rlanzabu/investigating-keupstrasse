@@ -179,8 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             onLeave: () => hideBubble(speaker, charL, charR, bubbleL, bubbleR),
             onLeaveBack: () => hideBubble(speaker, charL, charR, bubbleL, bubbleR)
+
         });
+
     });
+
+
 
     function updateConversation(speaker, message, charL, charR, bubbleL, bubbleR) {
         const targetBubble = speaker === 'left' ? bubbleL : bubbleR;
@@ -251,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
         const charKeys = Object.keys(characterRegistry);
 
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
             const currentId = charKeys[i % charKeys.length];
             const personData = characterRegistry[currentId];
             const personDiv = document.createElement('div');
@@ -262,15 +266,51 @@ document.addEventListener('DOMContentLoaded', () => {
             const assignedColor = colorCodes[filtroCriterio][valorCriterio] || "#ccc";
 
             personDiv.innerHTML = `
-                <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
-                <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
-            `;
+            <div class="backgroundColor" style="background: ${assignedColor}; opacity: 0.6;"></div>
+            <img src="images/${imageMap[currentId] || 'default.svg'}" alt="${personData.name}">
+        `;
 
-            // Asignamos el evento de click que usa la misma lógica del panel
+            // Asignar el evento de click que usa la misma lógica del panel
             personDiv.addEventListener('click', () => handleCharacterClick(personDiv));
             container.appendChild(personDiv);
         }
+
+        // LEYENDA DINÁMICA
+        const legendScale = document.querySelector('.legend-scale');
+        const legendHeader = document.querySelector('.legend-header');
+
+        if (legendScale && config) {
+            // Actualiza el encabezado de la leyenda
+            if (legendHeader) legendHeader.innerText = `DISTRIBUTION BY ${config.label.toUpperCase()}`;
+
+            // Limpia la leyenda anterior
+            legendScale.innerHTML = '';
+
+            // Obtenemos los pares [valor, color] del criterio actual desde colorCodes
+            const options = colorCodes[filtroCriterio];
+
+            Object.keys(options).forEach(key => {
+                const color = options[key];
+                const item = document.createElement('div');
+                item.className = 'scale-item';
+
+                // Formateamos el texto (ej: "true" -> "Yes", "directa" -> "Directa")
+                let displayLabel = key;
+                if (key === 'true') displayLabel = 'Yes';
+                if (key === 'false') displayLabel = 'No';
+
+                item.innerHTML = `
+                <span class="dot" style="background: ${color};"></span>
+                <span class="label-text" style="color: black; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: capitalize;">
+                    ${displayLabel}
+                </span>
+            `;
+                legendScale.appendChild(item);
+            });
+        }
     }
+
+
     const cycleBtn = document.getElementById('cycle-criterio');
     if (cycleBtn) {
         cycleBtn.addEventListener('click', () => {
@@ -292,5 +332,46 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.5,
         ease: "power2.out"
     });
+
+    ScrollTrigger.create({
+        trigger: "#mosaic-section",
+        start: "top 95%", // Se activa casi en cuanto el mosaico entra a la pantalla
+        end: "bottom top",
+        onEnter: () => {
+            const tl = document.getElementById('timeline-container');
+            if (tl) tl.classList.add('is-hidden');
+        },
+        onLeaveBack: () => {
+            const tl = document.getElementById('timeline-container');
+            if (tl) tl.classList.remove('is-hidden');
+        }
+    });
+
+
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+
+        // Actualizar barra y marcador
+        const fill = document.getElementById("path-fill");
+        const marker = document.getElementById("path-marker");
+
+        if (fill) fill.style.width = scrolled + "%";
+        if (marker) marker.style.left = scrolled + "%";
+
+        // Activar etiquetas según posición
+        document.querySelectorAll('.location').forEach(loc => {
+            const pos = parseFloat(loc.style.left);
+            // Si el scroll ha pasado la posición de la etiqueta, se ilumina
+            if (scrolled >= pos - 2) {
+                loc.classList.add('active');
+            } else {
+                loc.classList.remove('active');
+            }
+        });
+    });
+
+
 });
 

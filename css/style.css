@@ -401,11 +401,16 @@ p {
 }
 
 
+/* Asegúrate de que el contenedor principal del timeline tenga esto */
+#timeline-container {
+    transition: opacity 0.4s ease, visibility 0.4s ease !important;
+}
+
+/* La clase que lo mata */
 #timeline-container.is-hidden {
     opacity: 0 !important;
     visibility: hidden !important;
-    pointer-events: none;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: none !important;
 }
 .source-button {
     top: 20px;
@@ -467,32 +472,54 @@ p {
 }
 
 .visualContainer {
-    position: sticky;
-    top: 0;
-    height: 100vh; /* Ocupa toda la pantalla */
+    width: 100%;
+    min-height: 100vh; /* Permite que crezca más allá de la pantalla */
+    height: auto;      /* IMPORTANTE: Quitar el 100vh fijo */
     display: flex;
+    flex-direction: column; /* Alinea controles, grid y leyenda verticalmente */
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    justify-content: flex-start; /* Empieza desde arriba */
+
+    overflow: visible; /* Asegura que nada se corte */
+
+
+    background-color: var(--deep-black);
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 0;
+
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px; /* Aumentamos un poco el espacio para que respiren */
+    width: 95%;
+    max-width: 1200px; /* Ampliamos el ancho máximo para que quepan bien */
+    margin: 40px auto;
 }
 
 .zoomContainer {
     display: grid;
-    /* Creamos el grid de 60px como el de The Pudding */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    /* auto-fit con un mínimo de 100px para que los cuadros sean estéticos */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px; /* Espacio elegante entre recuadros */
     width: 95%;
-    max-width: 1200px;
-    padding: 50px;
+    max-width: 1000px; /* Evita que se estiren demasiado en pantallas anchas */
+    margin: 0 auto;
+    padding: 100px 0
 }
 .person {
-    width: 200px;
-    height: 200px;
-    position: relative; /* Base para los hijos absolutos */
+    width: 100%;       /* Deja que el Grid controle el ancho */
+    aspect-ratio: 1 / 1; /* Mantiene el cuadrado perfecto automáticamente */
+    position: relative;
     cursor: pointer;
     overflow: hidden;
-    background: antiquewhite;
-    border: 1px solid #1b1a1a;
+    background: #1a1a1a; /* Fondo oscuro coherente */
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.person:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-gold);
+    z-index: 5;
 }
 
 .person .backgroundColor {
@@ -514,36 +541,36 @@ p {
     z-index: 2; /* La cara va por encima del color */
 }
 
+.legend-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--soft-white);
+}
 
-.mosaic-controls {
+.legend-scale {
+    display: flex;
+    gap: 20px;
+}
+
+.scale-item {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-#cycle-criterio {
-    background: #1b1a1a;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-family: inherit;
+    gap: 8px;
     font-size: 0.8rem;
-    text-transform: uppercase;
-    transition: background 0.3s;
 }
 
-#cycle-criterio:hover {
-    background: rgba(255, 215, 0, 0.47);
-    color: #1b1a1a;
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
-#current-label {
-    font-size: 0.9rem;
-    color: #00ffff;
-}
+
 
 .content-section {
     min-height: 100vh; /* Cada sección ocupa al menos toda la pantalla */
@@ -576,10 +603,10 @@ p {
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
 
 :root {
-    --deep-black: #0a0a0a;  /* Negro casi puro */
-    --soft-white: #e4e4e4;  /* Blanco editorial */
-    --accent-gold: #c5a059; /* Un dorado apagado para detalles */
-    --ink-gray: #1a1a1a;    /* Para bloques de contraste */
+    --deep-black: #0d0d0d;        /* Un negro mate, no puro */
+    --soft-white: #f1ecec;        /* El blanco suave que tenías antes */
+    --accent-gold: rgba(159, 135, 10, 0.8); /* El dorado editorial suave */
+    --mosaic-bg: #1b1a1a;         /* Gris oscuro para los cuadros */
 }
 
 .content-section {
@@ -666,3 +693,179 @@ section:hover h2 {
     pointer-events: none;
 }
 
+:root {
+    /* Fondos */
+    --pudding-bg: #e3e4db;      /* El color hueso/crema original */
+    --deep-black: #1a1a1a;      /* Negro tinta (no es #000) */
+
+    /* Textos */
+    --soft-white: #f1ecec;      /* Blanco roto para textos sobre fondo oscuro */
+    --accent-gold: #c5a059;     /* Dorado editorial */
+
+    /* Mosaico */
+    --tile-bg: #d8d9cf;         /* Un tono más oscuro que el fondo para los cuadros */
+    --border-ink: rgba(0, 0, 0, 0.1); /* Bordes muy suaves */
+}
+#mosaic-section {
+    background-color: var(--pudding-bg); /* Fondo crema */
+    color: var(--deep-black);
+}
+
+.visualContainer {
+    background-color: var(--pudding-bg);
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Los cuadros del mosaico */
+.person {
+    background-color: var(--tile-bg);
+    border: 1px solid var(--border-ink);
+    aspect-ratio: 1 / 1;
+    transition: background-color 0.3s ease;
+}
+
+.person:hover {
+    background-color: #ffffff; /* Brilla a blanco puro al tocarlo */
+    border-color: var(--accent-gold);
+}
+
+/* Los controles (Botones) */
+#cycle-criterio {
+    background-color: var(--deep-black);
+    color: var(--pudding-bg);
+    border: none;
+    padding: 10px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+#current-label {
+    color: var(--deep-black);
+    font-family: 'JetBrains Mono', monospace;
+}
+#mosaic-section {
+    position: relative;
+    z-index: 100; /* Más alto que el timeline */
+}
+
+/* Esto SOLO afectará a la leyenda del mosaico */
+#mosaic-legend .legend-header {
+    color: #000000 !important; /* Negro */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+#mosaic-legend .scale-item {
+    color: #000000 !important; /* Los textos 0-20, 21-40, etc., en negro */
+    font-weight: 600;
+}
+
+/* 2. Mantener los títulos de otras secciones en blanco */
+.content-section h2,
+#research-section h2,
+#about-section h2,
+#orgs-section h2 {
+    color: transparent; /* Tu estilo original hueco */
+    -webkit-text-stroke: 1px var(--soft-white);
+}
+
+/* 1. COMPORTAMIENTO GLOBAL PARA SECCIONES (Research, About, etc.) */
+.content-section h2 {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--soft-white);
+    transition: all 0.5s ease;
+}
+
+/* El Hover: Esto es lo que se rompió y aquí lo restauramos */
+.content-section:hover h2 {
+    color: var(--soft-white) !important;
+    -webkit-text-stroke: 1px transparent !important;
+}
+
+/* 2. EXCEPCIÓN PARA LA LEYENDA DEL MOSAICO (Para que no se vea afectada) */
+#mosaic-legend .label-text {
+    /* Aquí forzamos que sea negro y NO tenga el stroke blanco de los títulos */
+    color: #000000 !important;
+    -webkit-text-stroke: 0px transparent !important;
+    text-transform: capitalize;
+}
+
+#mosaic-legend .legend-header {
+    color: #000000 !important;
+    -webkit-text-stroke: 0px transparent !important;
+}
+
+#scroll-path-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(13, 13, 13, 0.95); /* Tu negro mate con transparencia */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+    border-bottom: 1px solid rgba(241, 236, 236, 0.1);
+}
+
+.path-line {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: rgba(241, 236, 236, 0.2); /* Línea base tenue */
+}
+
+#path-fill {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: var(--accent-gold); /* Tu dorado editorial */
+    transition: width 0.1s ease-out;
+}
+
+#path-marker {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-gold);
+    border: 2px solid #0d0d0d;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s ease-out;
+}
+
+.path-labels {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    height: 20px;
+}
+
+.location {
+    position: absolute;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--soft-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.location.active {
+    opacity: 1;
+    color: var(--accent-gold);
+}
