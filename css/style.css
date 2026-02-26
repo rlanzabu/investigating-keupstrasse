@@ -1,27 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400&display=swap');
+@font-face {
+
+    font-family: 'Ancial';
+    src: local('Ancial'), local('Ancial-Regular'), url('../fonts/Ancial-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kikuta';
+    src: local('Kikuta'), local('Kikuta-Regular'), url('../fonts/kikuta-variable-VF.ttf') format('truetype');
+    /* Variable fonts support a range of weights */
+    font-weight: 100 900;
+    font-style: normal;
+}
 
 .header-container {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Kikuta', sans-serif !important;
     text-align: center;
     padding: 60px 20px;
-    background-color: #0d0d0d; /* Negro mate */
+    background-color: #0d0d0d;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ancial', sans-serif !important;
     font-weight: 700;
-    font-size: 2.0rem; /* Tamaño mucho más pequeño y controlado */
+    font-size: 3.0rem;
     margin-bottom: 12px;
     text-transform: uppercase;
-
-    /* Espaciado EXTRA para elegancia */
     letter-spacing: 12px;
-
-    /* Efecto Hueco muy fino */
     color: transparent;
     -webkit-text-stroke: 0.5px rgba(241, 236, 236, 0.8);
-
-    /* Para que el letter-spacing no descentre el texto (ajuste óptico) */
     padding-left: 12px;
 }
 
