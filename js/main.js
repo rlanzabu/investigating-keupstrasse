@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin); // Añadido ScrollToPlugin
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeline = document.getElementById('timeline-container');
     const toggleBtn = document.getElementById('toggle-timeline');
 
-    // --- NUEVA LÓGICA DE NAVEGACIÓN ---
+    //NUEVA LÓGICA DE NAVEGACIÓN
     const menuConfig = [
         { btnId: 'btn-research', target: '#research-section' },
         { btnId: 'toggle-timeline', target: '#sources-section' },
@@ -31,25 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-    // --- FIN NAVEGACIÓN ---
+    //
 
-    // Animación para los esquineros
-    gsap.to(".corner-svg", {
-        scale: 1.05,
-        rotation: "random(-2, 2)",
-        duration: 5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: 0.5
-    });
-
-    gsap.from(".corner-svg", {
-        y: -30,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power2.out"
-    });
 
     // Objetos laterales animados
     document.querySelectorAll('.extra-float').forEach((obj, index) => {
@@ -110,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Vertreter der Migranten in der " +
                 "Kommunalen Gesundheitskonferenz. Sprecher des Arbeitskreises Migration und Psychiatrie im Landschaftsverband Rheinland. " +
                 "Mitglied des LVR-Kompetenzzentrums Migration. ", gender: 'masculino', present: false, memory: 'directa' },
+        'muhamed': { name: "Muhamed", age: "--", role: "Anonymer Zeuge", desc: "Lebt seit 30 Jahren in Deutschland", gender: 'masculino', present: true, memory: 'directa' },
     };
 
     const colorCodes = {
