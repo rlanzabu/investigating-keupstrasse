@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-    //
+
 
 
     // Objetos laterales animados
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'man': 'man.svg',
         'kleffner': 'kleffner.svg',
         'gün': 'gün.svg',
+        'muhamed': 'man.svg',
     };
 
     const characterRegistry = {
