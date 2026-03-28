@@ -362,6 +362,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Detectamos cuando el usuario entra en las secciones de texto
+    const editorialSections = document.querySelectorAll('.content-section');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Si estamos en About/Research, añadimos la clase que oculta el timeline
+                document.body.classList.add('in-editorial-zone');
+            } else {
+                // Al salir (volver a los personajes), la quitamos
+                document.body.classList.remove('in-editorial-zone');
+            }
+        });
+    }, { threshold: 0.1 }); // Se activa cuando asoma el 10% de la sección
+
+    editorialSections.forEach(section => observer.observe(section));
+
 
 });
 
