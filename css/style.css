@@ -1249,3 +1249,58 @@ body {
     padding: 0;
     overflow-x: clip; /* Esto ayuda con el problema del espacio blanco que mencionaste antes */
 }
+
+.mosaic-controls {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;    /* Centra horizontalmente el botón y el texto */
+    justify-content: center;
+    text-align: center;     /* Centra el texto interno */
+    gap: 20px;              /* Espaciado uniforme entre piezas */
+    width: 100%;
+}
+
+.legend-scale {
+    display: flex;
+    flex-direction: row;    /* Mantiene los puntos en línea horizontal */
+    justify-content: center; /* Centra la fila de puntos */
+    gap: 25px;
+    width: 100%;
+}
+
+.scale-item {
+    display: flex;
+    align-items: center;    /* Centra el punto con su texto */
+    gap: 8px;
+}
+
+.mosaic-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;        /* Reducimos el espacio interno entre botón y puntos */
+    width: 100%;
+    margin-bottom: 15px; /* Reducimos drásticamente el espacio antes del grid */
+}
+
+.legend-scale {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.scale-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ajuste del contenedor del mosaico para que suba */
+#mosaic-grid-container.zoomContainer {
+    margin-top: 0;   /* Eliminamos cualquier margen superior residual */
+    padding-top: 0;
+}

@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeline = document.getElementById('timeline-container');
     const toggleBtn = document.getElementById('toggle-timeline');
 
+    const mosaicSection = document.querySelector('#mosaic-section');
+    const controls = document.querySelector('.mosaic-controls');
+
     //NUEVA LÓGICA DE NAVEGACIÓN
     const menuConfig = [
         { btnId: 'btn-research', target: '#research-section' },
@@ -245,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
         const charKeys = Object.keys(characterRegistry);
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 45; i++) {
             const currentId = charKeys[i % charKeys.length];
             const personData = characterRegistry[currentId];
             const personDiv = document.createElement('div');
@@ -378,6 +381,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 }); // Se activa cuando asoma el 10% de la sección
 
     editorialSections.forEach(section => observer.observe(section));
+
+
+
 
 
 });
