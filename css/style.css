@@ -27,7 +27,7 @@
 }
 @font-face {
     font-family: 'Luculent';
-    src: url('../fonts/luculent.woff') format('woff'); /* Asegúrate que diga 'woff' */
+    src: url('../fonts/luculent.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -1303,4 +1303,151 @@ body {
 #mosaic-grid-container.zoomContainer {
     margin-top: 0;   /* Eliminamos cualquier margen superior residual */
     padding-top: 0;
+}
+
+/* Contenedor de la cuadrícula */
+.source-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Estilo de cada item con fondo para legibilidad */
+.source-item {
+    /* Fondo ligeramente más claro y semi-transparente */
+    background: rgba(255, 255, 255, 0.85);
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    border-left: 4px solid #000;         /* Acento lateral negro */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* Suaviza los bordes y añade profundidad */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(4px); /* Difumina un poco el fondo SVG de atrás */
+}
+
+.source-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 3px 8px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.source-item p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #1a1a1a; /* Gris casi negro para máxima legibilidad */
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif; /* O la fuente de cuerpo que uses */
+}
+
+.text-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.text-link:hover {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+/* Responsividad para laptops y móviles */
+@media (max-width: 1024px) {
+    .source-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .source-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cambia el color a blanco solo para Research y About */
+#research-section p,
+#about-section p {
+    color: rgba(255, 215, 0, 0.47) !important; /* Forzamos el blanco */
+    opacity: 0.7;             /* Opcional: un toque de transparencia para suavizar */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Opcional: ayuda a leer sobre fondos complejos */
+}
+
+
+.editorial-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #000000; /* Fondo negro por defecto */
+    color: #ffffff;            /* Texto blanco */
+    border: 1px solid #000000;
+    border-left: 5px solid rgba(102, 102, 102, 0.54); /* Acento grueso blanco para que resalte sobre el negro */
+
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.1); /* Sombra clara */
+}
+
+.editorial-link:hover {
+    background-color: #ffffff; /* Fondo blanco al pasar el mouse */
+    color: #000000;            /* Texto negro */
+    border: 1px solid #000000;
+    border-left: 5px solid #000000; /* El acento cambia a negro */
+
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2); /* Sombra oscura para resaltar sobre el fondo */
+}
+
+.org-list {
+    list-style: none;
+    padding: 0;
+}
+
+.org-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Nueva tipografía aplicada */
+    font-family: 'Luculent', monospace !important;
+    font-size: 0.9rem; /* Ajusta según prefieras, Luculent a veces se ve pequeña */
+    letter-spacing: 0.7px;
+    color: #ffffff; /* Aseguramos que sea blanca si está en About/Research */
+}
+
+/* Si tienes enlaces dentro de la lista, asegúrate que también hereden la fuente */
+.org-list li a {
+    font-family: 'Luculent', monospace !important;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Reducir texto en About y Research */
+#about-section p,
+#research-section p {
+    font-size: 1.0rem; /* Ajusta este valor: menor número = más pequeña */
+    line-height: 1.5;   /* Un poco de aire entre líneas ayuda a la lectura pequeña */
+    color: #ffffff !important;
 }

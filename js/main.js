@@ -78,26 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const characterRegistry = {
-        'hasan': { name: "Hasan Yildirim", age: "52", role: "Friseur", desc: "Geboren in Ankara, kam 1997 nach Deutschland. War bereits in der Türkei als Friseur tätig und arbeitet auch in Deutschland in diesem Beruf. Arbeitete etwa acht Jahre lang in der Keupstraße.", gender: 'masculino', present: true, memory: 'directa' },
+        'hasan': { name: "Hasan Yildirim", age: "52", role: "Friseur", desc: "Geboren in Ankara, kam 1997 nach Deutschland. War bereits in der Türkei als Friseur tätig und arbeitet auch in Deutschland in diesem Beruf. Arbeitete etwa acht Jahre lang in der Keupstraße.", gender: 'männlich', present: true, memory: 'directa' },
         'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Anfang der 90er Jahre\n" +
                 "kommt er aus der Türkei, wo er als Kuaför (türkisch: Friseur) ausgebildet wurde, nach Deutschland.\n" +
                 "Er ist verheiratet und hat zwei Kinder, seine Frau Aygül stammt aus\n" +
-                "Köln.", gender: 'masculino', present: false, memory: 'directa' },
-        'testigo1': { name: "Abdullah Özkan", age: "--", role: "Nachbarn", desc: "war am 9. Juni als Kunde im Salon.", gender: 'masculino', present: true, memory: 'indirecta' },
-        'testigo2': { name: "Meral Şahin", age: "55", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, Geschäftsfrau und Vorsitzende der IG Keupstraße.", gender: 'femenino', present: true, memory: 'directa' },
-        'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Nachbarin", gender: 'femenino', present: true, memory: 'directa' },
-        'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). ", desc: "Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", gender: 'masculino', present: false, memory: 'colectiva' },
-        'man': { name: "Herr M.", age: "50", role: "Anonymer Zeuge", desc: "Lebt seit 20 Jahren in Deutschland. Da sie nicht möchte, dass Rückschlüsse auf ihre Person gezogen werden können, gibt sie ihren Beruf nicht an.", gender: 'masculino', present: true, memory: 'directa' },
+                "Köln.", gender: 'männlich', present: false, memory: 'directa' },
+        'testigo1': { name: "Abdullah Özkan", age: "--", role: "Nachbarn", desc: "war am 9. Juni als Kunde im Salon.", gender: 'männlich', present: true, memory: 'indirecta' },
+        'testigo2': { name: "Meral Şahin", age: "55", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, Geschäftsfrau und Vorsitzende der IG Keupstraße.", gender: 'weiblich', present: true, memory: 'directa' },
+        'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Nachbarin", gender: 'weiblich', present: true, memory: 'directa' },
+        'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). ", desc: "Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", gender: 'männlich', present: false, memory: 'colectiva' },
+        'man': { name: "Herr M.", age: "50", role: "Anonymer Zeuge", desc: "Lebt seit 20 Jahren in Deutschland. Da sie nicht möchte, dass Rückschlüsse auf ihre Person gezogen werden können, gibt sie ihren Beruf nicht an.", gender: 'männlich', present: true, memory: 'directa' },
         'kleffner': { name: "Heike Kleffner", age: "60", role: "deutsche Journalistin und Autorin.", desc: "Von 2004 bis 2009 leitete sie die Mobile Beratung für Opfer rechter Gewalt in Sachsen-Anhalt." +
                 "Bis 2013 war sie Referentin der Fraktion" +
                 " Die Linke im Bundestag im NSU-Untersuchung-" +
-                "sausschuss.", gender: 'femenino', present: false, memory: 'directa' },
+                "sausschuss.", gender: 'weiblich', present: false, memory: 'directa' },
         'gün': { name: "Ali Kemal Gün", age: "--", role: "Psychotherapeut ", desc: "Studium der Psychologie an der Universität Köln sowie " +
                 "Ausbildung in Psychodrama und systemischer Beratung und Therapie. " +
                 "Vertreter der Migranten in der " +
                 "Kommunalen Gesundheitskonferenz. Sprecher des Arbeitskreises Migration und Psychiatrie im Landschaftsverband Rheinland. " +
-                "Mitglied des LVR-Kompetenzzentrums Migration. ", gender: 'masculino', present: false, memory: 'directa' },
-        'muhamed': { name: "Muhamed", age: "--", role: "Anonymer Zeuge", desc: "Lebt seit 30 Jahren in Deutschland", gender: 'masculino', present: true, memory: 'directa' },
+                "Mitglied des LVR-Kompetenzzentrums Migration. ", gender: 'männlich', present: false, memory: 'directa' },
+        'muhamed': { name: "Muhamed", age: "--", role: "Anonymer Zeuge", desc: "Lebt seit 30 Jahren in Deutschland", gender: 'männlich', present: true, memory: 'directa' },
     };
 
     const colorCodes = {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'indirecta': "#8b0000",
             'colectiva': "#4682b4"
         },
-        gender: { 'masculino': "#2c3e50", 'femenino': "#e74c3c" }
+        gender: { 'männlich': "#2c3e50", 'weiblich': "#e74c3c" }
     };
 
     function handleCharacterClick(char) {
@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Formateamos el texto (ej: "true" -> "Yes", "directa" -> "Directa")
                 let displayLabel = key;
-                if (key === 'true') displayLabel = 'Yes';
-                if (key === 'false') displayLabel = 'No';
+                if (key === 'true') displayLabel = 'Ja';
+                if (key === 'false') displayLabel = 'Nein';
 
                 item.innerHTML = `
                 <span class="dot" style="background: ${color};"></span>
