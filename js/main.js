@@ -92,11 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Bis 2013 war sie Referentin der Fraktion" +
                 " Die Linke im Bundestag im NSU-Untersuchung-" +
                 "sausschuss.", gender: 'weiblich', present: false, memory: 'directa' },
-        'gün': { name: "Ali Kemal Gün", age: "--", role: "Psychotherapeut ", desc: "Studium der Psychologie an der Universität Köln sowie " +
-                "Ausbildung in Psychodrama und systemischer Beratung und Therapie. " +
-                "Vertreter der Migranten in der " +
-                "Kommunalen Gesundheitskonferenz. Sprecher des Arbeitskreises Migration und Psychiatrie im Landschaftsverband Rheinland. " +
-                "Mitglied des LVR-Kompetenzzentrums Migration. ", gender: 'männlich', present: false, memory: 'directa' },
+        'gün': { name: "Ali Kemal Gün", age: "--", role: "Psychotherapeut ", desc: "Psychologe (Uni Köln) mit Fokus auf Therapie und Beratung. Er vertritt Migranten in Gesundheitsfragen und leitet Arbeitsgruppen zu Migration und Psychiatrie im LVR. ", gender: 'männlich', present: false, memory: 'directa' },
         'muhamed': { name: "Muhamed", age: "--", role: "Anonymer Zeuge", desc: "Lebt seit 30 Jahren in Deutschland", gender: 'männlich', present: true, memory: 'directa' },
     };
 

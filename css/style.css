@@ -1451,3 +1451,80 @@ body {
     line-height: 1.5;   /* Un poco de aire entre líneas ayuda a la lectura pequeña */
     color: #ffffff !important;
 }
+
+.org-list li {
+    display: grid;
+    /* Columna 1: Nombre (fijo o auto), Columna 2: Descripción (el resto), Columna 3: Icono */
+    grid-template-columns: 220px 1fr auto;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 20px;
+}
+
+.org-list li strong {
+    white-space: nowrap;
+    /* Opcional: si el nombre es muy largo, cortarlo con puntos suspensivos */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Para asegurar que el texto se justifique dentro de su columna */
+.org-list li {
+    text-align: justify;
+}
+
+.icon-link {
+    justify-self: end; /* Empuja el emoji al final a la derecha */
+    text-decoration: none;
+}
+
+.site-disclaimer {
+    background-color: #000000;
+    padding: 10px 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Borde suave oscuro */
+    margin-top: 1px;
+    width: 100%;
+    display: block;
+    clear: both;
+}
+
+.site-disclaimer p {
+    font-family: 'Luculent', monospace !important;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    /* Usamos un gris oscuro si el fondo es claro, o blanco si es oscuro */
+    color: #666666;
+    text-align: center; /* Centrado suele verse mejor para disclaimers */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    font-family: 'Luculent', monospace !important;
+    font-size: 0.85rem;
+    color: white;
+}
+
+.contact-info em {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.separator {
+    margin: 0 10px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.linkedin-link {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.linkedin-link:hover {
+    color: rgba(255, 215, 0, 0.47); /* El color corporativo de LinkedIn, pero solo en hover */
+    border-bottom: 1px solid #0077b5;
+    opacity: 1;
+}
