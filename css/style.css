@@ -1528,3 +1528,41 @@ body {
     border-bottom: 1px solid #0077b5;
     opacity: 1;
 }
+
+.stealth-link {
+    color: inherit !important; /* Mantiene el color del texto del párrafo */
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* El borde sutil */
+    transition: all 0.3s ease;
+    display: inline-block; /* Ayuda a que el borde se posicione bien */
+    line-height: 1;
+}
+
+.stealth-link:hover {
+    color: #ffffff !important; /* Se ilumina un poco */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6); /* El borde se nota más */
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+.info-icon {
+    font-family: 'Luculent', monospace !important;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(27, 26, 26);
+    border: 1px solid rgb(27, 26, 26);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Icono circular */
+    transition: all 0.3s ease;
+}
+
+.info-popover {
+    font-family: 'Luculent', monospace !important;
+    color: #1b1a1a;
+    font-weight: bold;
+}
