@@ -78,16 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const characterRegistry = {
-        'hasan': { name: "Hasan Yildirim", age: "52", role: "Friseur", desc: "Geboren in Ankara, kam 1997 nach Deutschland. War bereits in der Türkei als Friseur tätig und arbeitet auch in Deutschland in diesem Beruf. Arbeitete etwa acht Jahre lang in der Keupstraße.", gender: 'männlich', present: true, memory: 'directa' },
+        'hasan': { name: "Hasan Yildirim", age: "52", role: "Friseur", desc: "Geboren in Ankara, kam 1997 nach Deutschland. War bereits in der Türkei als Friseur tätig und arbeitet auch in Deutschland in diesem Beruf. Arbeitete etwa acht Jahre lang in der Keupstraße.", gender: 'männlich', present: true, memory: 'implicit', modality: 'implicit', state: 'Raw sensory impression' },
         'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Anfang der 90er Jahre\n" +
                 "kommt er aus der Türkei, wo er als Kuaför (türkisch: Friseur) ausgebildet wurde, nach Deutschland.\n" +
                 "Er ist verheiratet und hat zwei Kinder, seine Frau Aygül stammt aus\n" +
-                "Köln.", gender: 'männlich', present: false, memory: 'directa' },
+                "Köln.", gender: 'männlich', present: false, memory: 'declarative', modality:'auditory', state: 'Raw sensory impression' },
         'testigo1': { name: "Abdullah Özkan", age: "--", role: "Nachbarn", desc: "war am 9. Juni als Kunde im Salon.", gender: 'männlich', present: true, memory: 'indirecta' },
         'testigo2': { name: "Meral Şahin", age: "55", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, Geschäftsfrau und Vorsitzende der IG Keupstraße.", gender: 'weiblich', present: true, memory: 'directa' },
         'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Nachbarin", gender: 'weiblich', present: true, memory: 'directa' },
         'schily': { name: "Otto Schily", age: "94", role: "Rechtsanwalt und Politiker (SPD). ", desc: "Von 1998 bis 2005 war er Bundesminister des Innern. Er war Mitgründer der Partei Die Grünen, von der er im November 1989 zur SPD wechselte.", gender: 'männlich', present: false, memory: 'colectiva' },
-        'man': { name: "Herr M.", age: "50", role: "Anonymer Zeuge", desc: "Lebt seit 20 Jahren in Deutschland. Da sie nicht möchte, dass Rückschlüsse auf ihre Person gezogen werden können, gibt sie ihren Beruf nicht an.", gender: 'männlich', present: true, memory: 'directa' },
+        'man': { name: "Herr M.", age: "50", role: "Anonymer Zeuge", desc: "Lebt seit 20 Jahren in Deutschland. Da  nicht möchte, dass Rückschlüsse auf ihre Person gezogen werden können, gibt sie ihren Beruf nicht an.", gender: 'männlich', present: true, memory: 'directa' },
         'kleffner': { name: "Heike Kleffner", age: "60", role: "deutsche Journalistin und Autorin.", desc: "Von 2004 bis 2009 leitete sie die Mobile Beratung für Opfer rechter Gewalt in Sachsen-Anhalt." +
                 "Bis 2013 war sie Referentin der Fraktion" +
                 " Die Linke im Bundestag im NSU-Untersuchung-" +
@@ -99,11 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorCodes = {
         present: { true: "#ffd700", false: "#1b1a1a" },
         memory: {
-            'directa': "rgb(0,124,128)",
-            'indirecta': "#8b0000",
-            'colectiva': "#4682b4"
+            'declarative': "rgb(0,124,128)",
+            'implicit': "#99dd77",
         },
-        gender: { 'männlich': "#2c3e50", 'weiblich': "#e74c3c" }
+        gender: { 'männlich': "#2c3e50", 'weiblich': "#e74c3c" },
+        modality: {},
+        state : {},
     };
 
     function handleCharacterClick(char) {
@@ -226,9 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
     createContextTrigger("#info-2", "#step-8");
 
     const criteriosConfig = [
-        { id: 'present', label: 'Present at the event' },
-        { id: 'memory', label: 'Type of memory' },
-        { id: 'gender', label: 'Gender' }
+        { id: 'present', label: 'Present at the attack' },
+        { id: 'memory', label: 'Memory system' },
+        { id: 'gender', label: 'Gender' },
+        { id: 'modality', label: 'Enconding Modality' },
+        { id: 'state', label: 'Processing memory' },
     ];
 
     let indiceActual = 0;
