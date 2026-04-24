@@ -1562,7 +1562,7 @@ body {
 }
 
 .info-popover {
-    font-family: 'Luculent', monospace !important;
+    font-family: monospace !important;
     color: #1b1a1a;
     font-weight: bold;
 }
