@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'ozcan': { name: "Özcan Yildirim", age: "--", role: "Inhaber des\nHaarstudio Özcan", desc: "Anfang der 90er Jahre\n" +
                 "kommt er aus der Türkei, wo er als Kuaför (türkisch: Friseur) ausgebildet wurde, nach Deutschland.\n" +
                 "Er ist verheiratet und hat zwei Kinder, seine Frau Aygül stammt aus\n" +
-                "Köln.", gender: 'männlich', present: false, memory: 'explicit| episodic', modality:'auditory', state: 'sensory impression' },
+                "Köln.", gender: 'männlich', present: false, memory: 'explicit| episodic', modality:'somatic| motor', state: 'sensory impression' },
         'testigo1': { name: "Abdullah Özkan", age: "--", role: "Nachbarn", desc: "war am 9. Juni als Kunde im Salon.", gender: 'männlich', present: true,
             memory: 'explicit| episodic', modality: 'sensory| perceptual', state: 'narratively consolidated' },
         'testigo2': { name: "Meral Şahin", age: "55", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, " +
@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'kleffner': { name: "Heike Kleffner", age: "60", role: "deutsche Journalistin und Autorin.", desc: "Von 2004 bis 2009 leitete sie die Mobile Beratung für Opfer rechter Gewalt in Sachsen-Anhalt." +
                 "Bis 2013 war sie Referentin der Fraktion" +
                 " Die Linke im Bundestag im NSU-Untersuchung-" +
-                "sausschuss.", gender: 'weiblich', present: false, memory: 'explicit| semantic', modality:'auditory', state: 'sensory impression' },
+                "sausschuss.", gender: 'weiblich', present: false, memory: 'explicit| semantic', modality:'verbal', state: 'narratively consolidated' },
         'gün': { name: "Ali Kemal Gün", age: "--", role: "Psychotherapeut ", desc: "Psychologe (Uni Köln) mit Fokus auf Therapie und Beratung. Er vertritt Migranten in Gesundheitsfragen und leitet Arbeitsgruppen zu Migration und Psychiatrie im LVR. ", gender: 'männlich', present: false,
-            memory: 'explicit| semantic', modality:'auditory', state: 'sensory impression' },
+            memory: 'explicit| semantic', modality:'verbal', state: 'narratively consolidated' },
         'muhamed': { name: "Muhamed", age: "--", role: "Anonymer Zeuge", desc: "Lebt seit 30 Jahren in Deutschland", gender: 'männlich', present: true,
-            memory: 'explicit| semantic', modality:'auditory', state: 'sensory impression' },
+            memory: 'explicit| semantic', modality:'somatic| motor', state: 'sensory impression' },
     };
 
     const colorCodes = {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'verbal': "#77b9dd",},
         state : {'sensory impression': "rgba(255,204,0,0.82)",
             'non consolidated': "rgb(162,75,182)",
-            'narratively consolidated': "#77b9dd",},
+            'narratively consolidated': "rgba(0,255,255,0.28)",},
     };
 
     function handleCharacterClick(char) {
