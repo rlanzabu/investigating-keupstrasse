@@ -225,6 +225,8 @@ p {
 .f5 { top: 45%; width: 380px; opacity: 0.7; filter: blur(0px); } /* Objeto masivo a la derecha */
 .f6 { top: 80%; width: 240px; opacity: 0.5; }
 
+
+
 #scrolly-section {
     position: relative;
 }
