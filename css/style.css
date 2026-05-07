@@ -1568,3 +1568,14 @@ body {
     color: #1b1a1a;
     font-weight: bold;
 }
+
+.license-text {
+    font-size: 0.7rem; /* Muy pequeña */
+    opacity: 0.5;      /* Casi transparente para que no compita con el diseño */
+    margin-top: 20px;
+}
+
+.license-text a {
+    color: inherit;
+    text-decoration: underline;
+}
