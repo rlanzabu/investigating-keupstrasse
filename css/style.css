@@ -1579,3 +1579,19 @@ body {
     color: inherit;
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; /* Cambia de horizontal a vertical */
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px; /* Reduce el tamaño del título para que no se corte */
+    }
+
+    img {
+        width: 100%; /* Que las imágenes no se salgan de la pantalla */
+        height: auto;
+    }
+}
