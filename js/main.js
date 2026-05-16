@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Köln.", gender: 'männlich', present: false, memory: 'explicit| episodic', modality:'somatic| motor', state: 'sensory impression' },
         'testigo1': { name: "Abdullah Özkan", age: "--", role: "Nachbarn", desc: "war am 9. Juni als Kunde im Salon.", gender: 'männlich', present: true,
             memory: 'explicit| episodic', modality: 'sensory| perceptual', state: 'narratively consolidated' },
-        'testigo2': { name: "Meral Şahin", age: "55", role: "Präsidentin der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, " +
+        'testigo2': { name: "Meral Şahin", age: "55", role: "Ehemalige Vorsitzende der Interessensgemeinschaft Keupstraße", desc: "1971 in Köln geboren, Tochter türkischer Einwanderer, " +
                 "Geschäftsfrau und Vorsitzende der IG Keupstraße.", gender: 'weiblich', present: true, memory: 'explicit| semantic', modality:'auditory', state: 'sensory impression'},
         'women': { name: "Anonyme Frau", age: "--", role: "Anonyme Zeuginnen", desc: "Nachbarin", gender: 'weiblich', present: true,
             memory: 'explicit| episodic', modality:'sensory| perceptual', state: 'narratively consolidated' },
