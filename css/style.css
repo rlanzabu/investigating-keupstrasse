@@ -141,6 +141,13 @@ p {
     margin-bottom: 0;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Corta cualquier elemento que intente salirse por la derecha */
+    margin: 0;
+    padding: 0;
+}
+
 /* Fila de botones */
 .top-nav {
     display: flex;
@@ -1593,5 +1600,188 @@ body {
     img {
         width: 100%; /* Que las imágenes no se salgan de la pantalla */
         height: auto;
+    }
+}
+
+
+/* ==========================================================================
+   SELECTOR DE IDIOMA MINIMALISTA (DROPDOWN)
+   ========================================================================== */
+
+/* Contenedor del menú desplegable */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 1rem; /* Mantiene la separación justa debajo del subtítulo */
+}
+
+/* El botón principal visible (Muestra el idioma activo) */
+.lang-dropbtn {
+    background: transparent;
+    color: #7f8c8d; /* Gris sutil */
+    border: 1px solid #333333; /* Borde casi invisible sobre fondo negro */
+    padding: 6px 14px;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Pequeña flecha del menú */
+.lang-dropbtn .arrow {
+    font-size: 0.6rem;
+    margin-left: 4px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover en el botón principal: se tiñe de tu dorado oscuro */
+.lang-dropdown:hover .lang-dropbtn {
+    color: #007c80;
+    border-color: #007c80;
+}
+
+/* Rotación de la flecha cuando el menú está abierto */
+.lang-dropdown:hover .lang-dropbtn .arrow {
+    transform: rotate(180deg);
+}
+
+/* Contenido oculto del menú (Las opciones de idioma) */
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%); /* Lo centra perfectamente debajo del botón */
+    background-color: #0c0c0c; /* Negro ligeramente más claro que el fondo absoluto para dar profundidad */
+    border: 1px solid #007c80; /* Contorno fino con tu dorado oscuro */
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 9999;
+    margin-top: 5px;
+    border-radius: 2px;
+}
+
+/* Estilo de los enlaces dentro del menú desplegable */
+.lang-dropdown-content a {
+    color: #888888;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+/* Hover en las opciones del menú */
+.lang-dropdown-content a:hover {
+    background-color: rgba(0, 124, 128, 0.1); /* Fondo sutil dorado oscuro */
+    color: #007c80; /* Texto dorado oscuro */
+}
+
+/* Muestra el menú al pasar el cursor sobre el contenedor */
+.lang-dropdown:hover .lang-dropdown-content {
+    display: block;
+}
+
+
+/* ==========================================================================
+   SELECTOR MINIMALISTA POR ICONO REVELADOR
+   ========================================================================== */
+
+.lang-minimal-container {
+    position: absolute;
+    left: 2rem;
+    top: 2rem; /* Lo separa del borde superior de la pantalla */
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 5px;
+    background: transparent;
+    height: 30px;
+    z-index: 10000; /* Se asegura de flotar por encima de cualquier capa de fondo */
+}
+
+/* El contenedor del SVG */
+.lang-icon-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Estilo del icono de mapa/globo */
+.globe-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #666666; /* Gris de archivo técnico */
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.3s ease;
+}
+
+/* El grupo de enlaces permanece oculto u opaco por defecto */
+.lang-links-reveal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.2;
+    transform: translateX(-5px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none; /* No interactivo si está oculto */
+}
+
+/* Transición al hacer HOVER en todo el conjunto */
+.lang-minimal-container:hover .globe-icon {
+    stroke: #007c80; /* Tu dorado oscuro / azul petróleo */
+    transform: rotate(15deg);
+}
+
+.lang-minimal-container:hover .lang-links-reveal {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto; /* Se vuelve clickeable */
+}
+
+/* Estilos de las siglas de idioma (DE, EN, ES) */
+.lang-link-item {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    color: #777777;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.lang-link-item:hover {
+    color: #007c80; /* Tu dorado oscuro */
+}
+
+/* Separadores entre siglas (•) */
+.ln-sep {
+    color: #444444;
+    font-size: 0.6rem;
+    user-select: none;
+}
+
+/* Clase para marcar visualmente cuál idioma está activo mediante JS */
+.lang-link-item.active {
+    color: #007c80;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .lang-minimal-container {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 1rem auto 0 auto;
+        justify-content: center;
+        display: flex;
     }
 }
