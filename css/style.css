@@ -1785,3 +1785,45 @@ body {
         display: flex;
     }
 }
+
+@media (max-width: 768px) {
+
+    /* 1. Evitar que el contenedor del Path de la calle rompa el ancho */
+    #scroll-path-container {
+        max-width: 100vw;
+        box-sizing: border-box;
+        padding: 10px 1rem !important; /* Reduce los rellenos laterales */
+    }
+
+    /* 2. Ocultar o colapsar las etiquetas flotantes en móvil */
+    /* Como las etiquetas tienen posiciones fijas en porcentaje (left: 25%, 50%),
+       en pantallas pequeñas se pisan y se salen del borde derecho. */
+    #scroll-path-container .path-labels {
+        display: none; /* La solución más limpia para móviles es ocultar los textos largos de la calle */
+    }
+
+    /* 3. Asegurar que las escenas del Scrollytelling no se desborden */
+    .scene, .stage {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* 4. Asegurar que las imágenes flotantes o SVGs no fuercen un ancho estático */
+    .character object,
+    .character img,
+    .floating-sidebar img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 5. Ajustar la barra de navegación superior */
+    .top-nav {
+        flex-wrap: wrap; /* Si los botones 01, 02, 03 no caben, bajan en lugar de empujar la pantalla */
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .source-button {
+        padding: 5px 8px; /* Hace los botones un poco más compactos */
+    }
+}
