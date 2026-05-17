@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mosaicSection = document.querySelector('#mosaic-section');
     const controls = document.querySelector('.mosaic-controls');
 
+    const initialLang = localStorage.getItem('preferred-lang') || 'de';
+    console.log(`Carga inicial de la página. Idioma en caché: [${initialLang.toUpperCase()}]`);
+    if (initialLang !== 'de') {
+        setTimeout(() => changeLanguage(initialLang), 100);
+    }
+
     //NUEVA LÓGICA DE NAVEGACIÓN
     const menuConfig = [
         { btnId: 'btn-research', target: '#research-section' },
@@ -127,11 +133,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const charId = char.dataset.id;
         const data = characterRegistry[charId];
+
         if (data) {
+            // El nombre y la edad se mantienen igual porque no cambian entre idiomas
             document.getElementById('p-name').textContent = data.name;
             document.getElementById('p-age').textContent = data.age;
-            document.getElementById('p-role').textContent = data.role;
-            document.getElementById('p-desc').textContent = data.desc;
+
+            // Conseguimos el idioma activo actual desde el localStorage (por defecto 'de')
+            const currentLang = localStorage.getItem('preferred-lang') || 'de';
+
+            // Comprobamos si el JSON traducido está cargado en el navegador
+            // Si el idioma es alemán ('de') o no se encuentra la traducción en caliente, usamos el texto estático por defecto
+            if (currentLang !== 'de' && window.currentTranslations) {
+                const roleKey = `char-${charId}-role`;
+                const descKey = `char-${charId}-desc`;
+
+                document.getElementById('p-role').textContent = window.currentTranslations[roleKey] || data.role;
+                document.getElementById('p-desc').textContent = window.currentTranslations[descKey] || data.desc;
+            } else {
+                // Caída de seguridad: si es alemán, usa los datos del objeto hardcodeado
+                document.getElementById('p-role').textContent = data.role;
+                document.getElementById('p-desc').textContent = data.desc;
+            }
+
             panel.classList.add('is-visible');
         }
     }
@@ -157,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ========================================================
+    // BUCLE DE SCROLLYTELLING OPTIMIZADO PARA IDIOMAS DINÁMICOS
+    // ========================================================
     steps.forEach((step) => {
         const parentScene = step.closest('.scene');
         if (!parentScene) return;
@@ -166,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const bubbleR = charR.querySelector('.bubble');
 
         const speaker = step.dataset.who;
-        const message = step.dataset.text;
         const markerId = step.dataset.marker;
 
         ScrollTrigger.create({
@@ -174,18 +200,21 @@ document.addEventListener('DOMContentLoaded', () => {
             start: "top center",
             end: "bottom center",
             onEnter: () => {
-                updateConversation(speaker, message, charL, charR, bubbleL, bubbleR);
+                // LEER EN CALIENTE: En vez de usar una variable externa,
+                // leemos el 'data-text' actual del elemento justo en el milisegundo en el que entra en pantalla
+                const currentMessage = step.getAttribute('data-text');
+                updateConversation(speaker, currentMessage, charL, charR, bubbleL, bubbleR);
                 updateTimelineMarker(markerId);
             },
             onEnterBack: () => {
-                updateConversation(speaker, message, charL, charR, bubbleL, bubbleR);
+                // Hacemos lo mismo al hacer scroll hacia arriba
+                const currentMessage = step.getAttribute('data-text');
+                updateConversation(speaker, currentMessage, charL, charR, bubbleL, bubbleR);
                 updateTimelineMarker(markerId);
             },
             onLeave: () => hideBubble(speaker, charL, charR, bubbleL, bubbleR),
             onLeaveBack: () => hideBubble(speaker, charL, charR, bubbleL, bubbleR)
-
         });
-
     });
 
 
@@ -395,7 +424,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
     editorialSections.forEach(section => observer.observe(section));
 
+    async function changeLanguage(lang) {
+        console.log(`🚀 Función changeLanguage activada para el idioma: [${lang.toUpperCase()}]`);
 
+        try {
+            // 1. CONTROL DE CLASES ACTIVAS EN LOS BOTONES
+            document.querySelectorAll('.lang-link-item').forEach(el => el.classList.remove('active'));
+
+            const targetLink = document.querySelector(`.lang-link-item.ln-${lang}`);
+            if (targetLink) {
+                targetLink.classList.add('active');
+                console.log(`✅ Botón visual .ln-${lang} activado.`);
+            } else {
+                console.warn(`⚠️ No se encontró el botón visual con la clase .ln-${lang}`);
+            }
+
+            // 2. CASO ESPECIAL: Si es Alemán (DE), no necesitamos hacer fetch porque los textos ya están en el HTML
+            if (lang === 'de') {
+                console.log("Restaurando textos originales en alemán desde el HTML base.");
+                localStorage.setItem('preferred-lang', 'de');
+                document.documentElement.lang = 'de';
+                location.reload();
+                return;
+            }
+
+            // 3. CARGAR EL ARCHIVO JSON TRADUCIDO POR DEEPL
+            const response = await fetch(`lang/${lang}.json`);
+            if (!response.ok) {
+                throw new Error(`Error HTTP al cargar el JSON: ${response.status} en lang/${lang}.json`);
+            }
+
+            const translations = await response.json();
+            console.log(`📦 JSON de [${lang.toUpperCase()}] cargado con éxito. Procesando inyección...`);
+
+            // === ¡AQUÍ VA LA NUEVA LÍNEA! ===
+            // Guardamos el lote en una ventana global para que el side panel pueda consultarlo en vivo
+            window.currentTranslations = translations;
+
+            // 4. INYECTAR TEXTOS ESTÁTICOS (data-translate)
+            const elementsToTranslate = document.querySelectorAll('[data-translate]');
+            elementsToTranslate.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[key]) {
+                    element.innerHTML = translations[key];
+                }
+            });
+
+            // 5. INYECTAR TEXTOS DEL SCROLLYTELLING (.step)
+            const scrollySteps = document.querySelectorAll('.step');
+            scrollySteps.forEach((stepElement, index) => {
+                const dynamicKey = `scrolly-${index}`;
+                if (translations[dynamicKey]) {
+                    stepElement.setAttribute('data-text', translations[dynamicKey]);
+                }
+            });
+
+            // 6. GUARDAR PREFERENCIA EN EL NAVEGADOR
+            localStorage.setItem('preferred-lang', lang);
+            document.documentElement.lang = lang;
+
+            console.log(`🎉 ¡Cambio de idioma a [${lang.toUpperCase()}] completado con éxito!`);
+
+        } catch (error) {
+            console.error("❌ Error crítico dentro de changeLanguage:", error);
+        }
+    }
+
+    // Forzar accesibilidad global desde el HTML onclick
+    window.changeLanguage = changeLanguage;
 
 
 
