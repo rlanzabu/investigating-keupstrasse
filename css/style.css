@@ -1827,3 +1827,107 @@ body {
         padding: 5px 8px; /* Hace los botones un poco más compactos */
     }
 }
+
+/* ==========================================================================
+   SELECTOR DE IDIOMAS SIEMPRE VISIBLE (AL FINAL DE LA FRASE)
+   ========================================================================== */
+
+/* Contenedor lineal centrado */
+.header-container .subtitle-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important; /* Espacio cómodo entre el punto final de la frase y el selector */
+    margin-top: 10px !important;
+    position: relative !important;
+}
+
+/* Forzar al párrafo a mantenerse en línea sin bloquear espacio */
+.header-container p[data-translate="header-sub"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+}
+
+/* Contenedor del selector fijado en el flujo horizontal */
+.header-container .lang-minimal-container {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important; /* Espacio entre el icono del globo y las letras */
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1000 !important;
+}
+
+/* Envoltura del icono */
+.header-container .lang-icon-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    margin-top: -1px;
+}
+
+/* Estilo del globo fino (Visible permanentemente en gris oscuro) */
+.header-container .globe-icon {
+    width: 14px !important;
+    height: 14px !important;
+    fill: none !important;
+    stroke: #444444 !important; /* Gris oscuro integrado */
+    stroke-width: 1.2 !important;
+    transition: stroke 0.3s ease !important;
+}
+
+/* Bloque de idiomas SIEMPRE VISIBLE */
+.header-container .lang-links-reveal {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    opacity: 1 !important;        /* Forzamos visibilidad total desde el inicio */
+    max-width: none !important;    /* Quitamos la restricción de ancho */
+    overflow: visible !important;
+    transform: none !important;    /* Quitamos el desplazamiento de la animación */
+    pointer-events: auto !important; /* Siempre interactivo */
+}
+
+/* Enlaces tipográficos (Gris sutil por defecto) */
+.header-container .lang-link-item {
+    font-family: 'Special Elite', monospace !important;
+    font-size: 0.75rem !important;
+    color: #666666 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.5px !important;
+    transition: color 0.2s ease !important;
+}
+
+/* Separadores internos (•) */
+.header-container .ln-sep {
+    color: #333333 !important;
+    font-size: 0.5rem !important;
+    user-select: none !important;
+}
+
+/* ==========================================================================
+   ESTADOS INTERACTIVOS (CAMBIA EL COLOR AQUÍ)
+   ========================================================================== */
+
+/* Color al pasar el cursor sobre el icono del globo */
+.header-container .lang-minimal-container:hover .globe-icon {
+    stroke: #fbfbf8 !important; /* <--- TU COLOR EN HOVER (Ejemplo: Dorado) */
+}
+
+/* Color al pasar el cursor sobre las letras individuales */
+.header-container .lang-link-item:hover {
+    color: #00ffb2 !important;  /* <--- TU COLOR EN HOVER */
+}
+
+/* Color fijo para el idioma que está actualmente activo */
+.header-container .lang-link-item.active {
+    color: #aaa9a7 !important;  /* <--- TU COLOR PARA EL IDIOMA ACTIVO */
+    font-weight: bold !important;
+}
+

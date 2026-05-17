@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Keupstraße: A Study on Fragmentierte Erinnerung</title>
+  <title data-translate="site-title">Keupstraße: A Study on Fragmentierte Erinnerung</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Special+Elite&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,29 +12,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
 <div class="header-container">
-  <h1>Köln-Mülheim, 2004, 9. Juni</h1>
-  <p data-translate="header-sub">Forensik kollektiver Erinnerung</p>
-</div>
+  <h1 data-translate="scene-date">Köln-Mülheim, 2004, 9. Juni</h1>
 
-<script src="js/gsap.min.js"></script>
-<script src="js/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
+  <div class="subtitle-row">
+    <p data-translate="header-sub">Forensik kollektiver Erinnerung</p>
+
+    <div class="lang-minimal-container">
+      <div class="lang-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="globe-icon">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          <path d="M2 12h20M3.6 6h16.8M3.6 18h16.8" />
+        </svg>
+      </div>
+      <div class="lang-links-reveal">
+        <a href="#" onclick="changeLanguage('de'); event.preventDefault();" class="lang-link-item ln-de active">DE</a>
+        <span class="ln-sep">•</span>
+        <a href="#" onclick="changeLanguage('en'); event.preventDefault();" class="lang-link-item ln-en">EN</a>
+        <span class="ln-sep">•</span>
+        <a href="#" onclick="changeLanguage('es'); event.preventDefault();" class="lang-link-item ln-es">ES</a>
+        <span class="ln-sep">•</span>
+        <a href="#" onclick="changeLanguage('tr'); event.preventDefault();" class="lang-link-item ln-tr">TR</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 <header class="main-header">
-
-
-
   <nav class="top-nav">
-
-
-
     <button class="source-button" id="btn-research">
       <span>01</span>
       <small data-translate="nav-research">RESEARCH</small>
     </button>
-
 
     <button class="source-button" id="toggle-timeline">
       <span>02</span>
@@ -53,47 +64,44 @@
   </nav>
 </header>
 
-
 <div id="timeline-container">
   <div class="timeline-group" id="group-1">
-    <div id="marker-hasan" class="time-marker">
-
+    <div id="marker-hasan" class="time-marker" data-translate="timeline-m1">
       Der Kuaför aus der Keupstraße
-      Ein Dokumentarfilm von Andreas Maus</div>
-    <div id="marker-ozcan" class="time-marker">Veröffentlichungsdatum: 27.10.2015</div>
+      Ein Dokumentarfilm von Andreas Maus
+    </div>
+    <div id="marker-ozcan" class="time-marker" data-translate="timeline-m2">Veröffentlichungsdatum: 27.10.2015</div>
   </div>
 
   <div class="timeline-group" id="group-2">
-    <div id="marker-women" class="time-marker">Offener Brief an Otto Schily
+    <div id="marker-women" class="time-marker" data-translate="timeline-m3">
+      Offener Brief an Otto Schily
       und den Bundes-Untersuchungsausschuss
-      Köln, 13.3.2013</div>
-    <div id="marker-schilly" class="time-marker">Diese Äußerung wurde am Abend des 10.06.2004 in der 20-Uhr-Ausgabe der "Tagesschau" ausgestrahlt.</div>
+      Köln, 13.3.2013
+    </div>
+    <div id="marker-schilly" class="time-marker" data-translate="timeline-m4">Diese Äußerung wurde am Abend des 10.06.2004 in der 20-Uhr-Ausgabe der "Tagesschau" ausgestrahlt.</div>
   </div>
 
   <div class="timeline-group" id="group-3">
-    <div id="marker-man" class="time-marker">Von Mauerfall bis Nagelbombe</div>
-    <div id="marker-kleffner" class="time-marker">Eine Publikation der Amadeu Antonio Stiftung</div>
+    <div id="marker-man" class="time-marker" data-translate="timeline-m5">Von Mauerfall bis Nagelbombe</div>
+    <div id="marker-kleffner" class="time-marker" data-translate="timeline-m6">Eine Publikation der Amadeu Antonio Stiftung</div>
   </div>
-</div>
-
 
   <div class="timeline-group" id="group-4">
     <div id="marker-man1" class="time-marker">--</div>
-    <div id="marker-gün" class="time-marker"> Springer Medizin Verlag GmbH Veröffentlicht: 06.06.2014</div>
+    <div id="marker-gün" class="time-marker" data-translate="timeline-m7">Springer Medizin Verlag GmbH Veröffentlicht: 06.06.2014</div>
   </div>
-
 
   <div class="timeline-group" id="group-5">
-    <div id="marker-fr" class="time-marker">Dialogportal Qantara.de Veröffentlichungsdatum: 10.06.2024 </div>
-    <div id="marker-abdullah" class="time-marker">Der Kuaför aus der Keupstraße</div>
+    <div id="marker-fr" class="time-marker" data-translate="timeline-m8">Dialogportal Qantara.de Veröffentlichungsdatum: 10.06.2024</div>
+    <div id="marker-abdullah" class="time-marker" data-translate="timeline-m9">Der Kuaför aus der Keupstraße</div>
   </div>
-
+</div>
 
 <div id="scrolly-section">
 
   <section class="scene">
     <div class="stage">
-
       <div class="floating-sidebar left-side">
         <img src="images/nail.svg" class="extra-float f4" alt="deco">
         <img src="images/nail.svg" class="extra-float f4" alt="deco">
@@ -116,44 +124,30 @@
         <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
         <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
       </div>
-
     </div>
 
     <div id="info-1" class="context-box">
-      <p data-translate="context-1">Am 9. Juni 2004 verübte der NSU einen Nagelbombenanschlag in der Kölner Keupstraße, einem Zentrum türkischen Geschäftslebens, bei dem 22 Menschen verletzt wurden.<br>
-        Dieses Projekt fragt, wie Ereignisse forensisch rekonstruierbar sind, wenn Beweismaterial systematisch zerstört oder verdrängt wurde.</p>
+      <p data-translate="context-1">
+        Am 9. Juni 2004 verübte der NSU einen Nagelbombenanschlag in der Kölner Keupstraße, einem Zentrum türkischen Geschäftslebens, bei dem 22 Menschen verletzt wurden.<br>
+        Dieses Projekt fragt, wie Ereignisse forensisch rekonstruierbar sind, wenn Beweismaterial systematisch zerstört oder verdrängt wurde.
+      </p>
     </div>
 
     <div class="script">
-
       <div class="step" data-who="left" data-text="In diesem Schockzustand realisiert man nichts." data-marker="marker-hasan"></div>
       <div class="step" data-who="right" data-text="Doch für uns war das erst der Anfang." data-marker="marker-ozcan"></div>
       <div class="step" data-who="left" data-text="Es war sehr schlimm"></div>
-      <div class="step" data-who="right" data-text="Es ist schwer, diese leidvolle Erfahrung
-      in Worte zu fassen."></div>
+      <div class="step" data-who="right" data-text="Es ist schwer, diese leidvolle Erfahrung in Worte zu fassen."></div>
       <div class="step" data-who="left" data-text="Als ich nach vorne kam, wurde mir das Ausmaß der Explosion bewusst."></div>
-      <div class="step" data-who="right" data-text="Ich fühle mich natürlich noch schockiert
-        von der gestrigen Tat. Wenn ich die Augen schließe, sehe ich noch die Bilder von gestern."></div>
-      <div class="step" data-who="left" data-text="All das haben wir bis 2011 ertragen.
-      "></div>
-      <div class="step" data-who="right" data-text="Du bist Opfer, aber du stehst
-      unter immensem Druck. Meine Psyche war völlig hinüber."></div>
-
-
-
+      <div class="step" data-who="right" data-text="Ich fühle mich natürlich noch schockiert von der gestrigen Tat. Wenn ich die Augen schließe, sehe ich noch die Bilder von gestern."></div>
+      <div class="step" data-who="left" data-text="All das haben wir bis 2011 ertragen."></div>
+      <div class="step" data-who="right" data-text="Du bist Opfer, aber du stehst unter immensem Druck. Meine Psyche war völlig hinüber."></div>
     </div>
   </section>
 
-
-
-
-
-
   <section class="scene">
     <div class="stage">
-
       <div class="floating-sidebar left-side">
-
         <img src="images/nail.svg" class="extra-float f2" alt="deco">
         <img src="images/nail.svg" class="extra-float f3" alt="deco">
       </div>
@@ -172,32 +166,20 @@
         <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
         <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
       </div>
-
     </div>
 
-
     <div class="script">
-      <div class="step" data-who="left" data-text="Am 9. Juni 2004 war ich mit meinem 7-jährigen Sohn zuhause. Ich hörte einen lauten
-      Knall und dachte es sei ein Erdbeben." data-marker="marker-women"></div>
+      <div class="step" data-who="left" data-text="Am 9. Juni 2004 war ich mit meinem 7-jährigen Sohn zuhause. Ich hörte einen lauten Knall und dachte es sei ein Erdbeben." data-marker="marker-women"></div>
       <div class="step" data-who="right" data-text="Die Erkenntnisse, die unsere Sicherheitsbehörden bisher gewonnen haben, deuten nicht auf einen terroristischen Hintergrund, sondern auf ein kriminelles Milieu" data-marker="marker-schilly"></div>
       <div class="step" data-who="left" data-text="Nach zwei Stunden stürmte plötzlich die Polizei, ohne Klingeln, meine Wohnung. Sie brachen zwei Türen auf und durchsuchten meine Wohnung."></div>
       <div class="step" data-who="right" data-text="aber die Ermittlungen sind noch nicht abgeschlossen, so dass ich eine abschließende Beurteilung dieser Ereignisse jetzt nicht vornehmen kann."></div>
-      <div class="step" data-who="left" data-text="Die Polizei sagte mir, dass ich bzw. mein Mann verdächtigt werden, eine Bombe gelegt zu haben. Als Grund gaben sie an, dass ich Kurdin sei und deswegen
-    verdächtigt werde, mit der PKK zu tun zu haben."></div>
-
-
+      <div class="step" data-who="left" data-text="Die Polizei sagte mir, dass ich bzw. mein Mann verdächtigt werden, eine Bombe gelegt zu haben. Als Grund gaben sie an, dass ich Kurdin sei und deswegen verdächtigt werde, mit der PKK zu tun zu haben."></div>
     </div>
   </section>
 
-
-
-
-
   <section class="scene">
     <div class="stage">
-
       <div class="floating-sidebar left-side">
-
         <img src="images/nail.svg" class="extra-float f2" alt="deco">
         <img src="images/nail.svg" class="extra-float f3" alt="deco">
       </div>
@@ -216,34 +198,20 @@
         <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
         <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
       </div>
-
     </div>
 
-
     <div class="script">
-      <div class="step" data-who="left" data-text="Wenn ich ehrlich bin: Immer wenn ich darüber rede, kommen die Erinnerungen an den
-      Tag in mir wieder hoch. Auch jetzt, wo der deutsche Staat mit uns darüber redet, stehen
-      wir immer noch unter dem Einfluss des Anschlags" data-marker="marker-man"></div>
-      <div class="step" data-who="right" data-text="Der Anschlag in der Keupstraße im Juni 2004 und das Staatsversagen im NSU-Kontext
-      haben für viele der Betroffenen diese Erinnerungen schmerzlich wieder belebt und verstärkt" data-marker="marker-kleffner"></div>
-      <div class="step" data-who="left" data-text=" Körperlich habe ich noch eine Narbe hier an der Hand. Auch am Hinterkopf habe ich eine bleibende
-      Narbe. Und am Bein habe ich an zwei Stellen Narben.."></div>
-      <div class="step" data-who="right" data-text="Deutlich wird dies u.a. in den Ergebnissen einer Befragung des Dortmunder Futureorg-Instituts von über 1.000 in Deutschland lebenden Migrant_innen türkischer Herkunft über die
-      Auswirkungen der NSU-Morde"></div>
-      <div class="step" data-who="left" data-text="Wir sind drei oder vier Male nach Berlin eingeladen worden...Sie haben sich bei uns entschuldigt, die Staatsober-häupter. Aber was geschehen ist, ist gesche-
-      hen. Entschuldigungen bringen da nichts. Wir haben materielle und psychologische Wunden erlitten."></div>
-
-
+      <div class="step" data-who="left" data-text="Wenn ich ehrlich bin: Immer wenn ich darüber rede, kommen die Erinnerungen an den Tag in mir wieder hoch. Auch jetzt, wo der deutsche Staat mit uns darüber redet, stehen wir immer noch unter dem Einfluss des Anschlags" data-marker="marker-man"></div>
+      <div class="step" data-who="right" data-text="Der Anschlag in der Keupstraße im Juni 2004 und das Staatsversagen im NSU-Kontext haben für many der Betroffenen diese Erinnerungen schmerzlich wieder belebt und verstärkt" data-marker="marker-kleffner"></div>
+      <div class="step" data-who="left" data-text=" Körperlich habe ich noch eine Narbe hier an der Hand. Auch am Hinterkopf habe ich eine bleibende Narbe. Und am Bein habe ich an zwei Stellen Narben.."></div>
+      <div class="step" data-who="right" data-text="Deutlich wird dies u.a. in den Ergebnissen einer Befragung des Dortmunder Futureorg-Instituts von über 1.000 in Deutschland lebenden Migrant_innen türkischer Herkunft über die Auswirkungen der NSU-Morde"></div>
+      <div class="step" data-who="left" data-text="Wir sind drei oder vier Male nach Berlin eingeladen worden...Sie haben sich bei uns entschuldigt, die Staatsober-häupter. Aber was geschehen ist, ist gesche- hen. Entschuldigungen bringen da nichts. Wir haben materielle und psychologische Wunden erlitten."></div>
     </div>
   </section>
 
-
-
   <section class="scene">
     <div class="stage">
-
       <div class="floating-sidebar left-side">
-
         <img src="images/nail.svg" class="extra-float f2" alt="deco">
         <img src="images/nail.svg" class="extra-float f3" alt="deco">
       </div>
@@ -262,54 +230,24 @@
         <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
         <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
       </div>
-
     </div>
-
 
     <div class="script">
-      <div class="step" data-who="left" data-text="Ich habe ein, zwei Jahre mit meinem Ohr
-        Probleme gehabt. Ich war damit nicht beim
-        Arzt. Ein paar meiner Kollegen waren bei der
-        Polizei, und sie haben mir erzählt, wie dort
-        mit ihnen umgegangen wurde, wie die Polizei
-        versucht hat, Schuldige und Verdächtige zu
-        finden " data-marker="marker-man"></div>
+      <div class="step" data-who="left" data-text="Ich habe ein, zwei Jahre mit meinem Ohr Probleme gehabt. Ich war damit nicht beim Arzt. Ein paar meiner Kollegen waren bei der Polizei, und sie haben mir erzählt, wie dort mit ihnen umgegangen wurde, wie die Polizei versucht hat, Schuldige und Verdächtige zu finden " data-marker="marker-man"></div>
       <div class="step" data-who="right" data-text="Diesen Menschen ist großes Unrecht angetan worden" data-marker="marker-gün"></div>
-      <div class="step" data-who="left" data-text=" Wenn ich zum Arzt gegangen wäre,
-        hätte der Arzt mich auch gefragt, wo ich arbeite und wo ich wohne. Und wenn ich gesagt hätte,
-        dass ich auf der Keupstraße wohne, hätte er gesagt: »Aha, sie haben etwas mit
-        der Bombe zu tun, die explodiert ist.«"></div>
-      <div class="step" data-who="right" data-text="Jetzt bekommen sie die Wertschätzung von der Mehrheitsgesellschaft, die sie brauchen. Das kann ihnen verloren gegangene Sicherheit und Vertrauen wiedergeben.
-      Traumatisierte würden ihre Erfahrungen auf die nächste Generation übertragen. Die „Schaffung einer Erinnerungskultur“ ein wichtiger Schritt."></div>
-      <div class="step" data-who="left" data-text="Deswegen habe ich gewartet. Später war ich dann
-        doch beim Arzt und der hat mir gesagt, dass
-        man nun nichts mehr machen könne, weil es
-        zu spät sei. Ich höre nicht mehr richtig."></div>
-      <div class="step" data-who="left" data-text="Ich war schockiert. Die ersten zwei Jahre
-        waren für mich chaotisch. Ich hatte ständig
-        Angst[...]Ich erwarte, dass man die Geschichte im Pro-
-        zess richtig beleuchtet. Es kann sein, dass sie
-        nicht richtig tief reingehen. Wenn es nicht
-        zu einem Gerichtsurteil kommt, wenn da
-        im Gericht nichts bewiesen wird oder nur
-        eine Frau ins Gefängnis gehen muss und
-        keine weiteren Konsequenzen folgen, wird
-        es schlimm werden"></div>
-
-
+      <div class="step" data-who="left" data-text=" Wenn ich zum Arzt gegangen wäre, hätte der Arzt mich auch gefragt, wo ich arbeite und wo ich wohne. Und wenn ich gesagt hätte, dass ich auf der Keupstraße wohne, hätte er gesagt: »Aha, sie haben etwas mit der Bombe zu tun, die explodiert ist.«"></div>
+      <div class="step" data-who="right" data-text="Jetzt bekommen sie die Wertschätzung von der Mehrheitsgesellschaft, die sie brauchen. Das kann ihnen verloren gegangene Sicherheit und Vertrauen wiedergeben. Traumatisierte würden ihre Erfahrungen auf die nächste Generation übertragen. Die „Schaffung einer Erinnerungskultur“ ein wichtiger Schritt."></div>
+      <div class="step" data-who="left" data-text="Deswegen habe ich gewartet. Später war ich dann doch beim Arzt und der hat mir gesagt, dass man nun nichts mehr machen könne, weil es zu spät sei. Ich höre nicht mehr richtig."></div>
+      <div class="step" data-who="left" data-text="Ich war schockiert. Die ersten zwei Jahre waren für mich chaotisch. Ich hatte ständig Angst[...]Ich erwarte, dass man die Geschichte im Pro- zess richtig beleuchtet. Es kann sein, dass sie nicht richtig tief reingehen. Wenn es nicht zu einem Gerichtsurteil kommt, wenn da im Gericht nichts bewiesen wird oder nur eine Frau ins Gefängnis gehen muss und keine weiteren Konsequenzen folgen, wird es schlimm werden"></div>
     </div>
   </section>
-
-
 
   <section class="scene">
     <div class="stage">
       <div class="floating-sidebar left-side">
-
         <img src="images/nail.svg" class="extra-float f2" alt="deco">
         <img src="images/nail.svg" class="extra-float f3" alt="deco">
       </div>
-
 
       <div class="character left-char" data-id="testigo1">
         <object data="images/abdullah.svg" type="image/svg+xml"></object>
@@ -325,92 +263,70 @@
         <img src="images/explotion1.svg" class="extra-float f5" alt="deco">
         <img src="images/explotion1.svg" class="extra-float f6" alt="deco">
       </div>
-
-
     </div>
+
     <div id="info-2" class="context-box">
-      <p data-translate="context-2">Es geht von der Annahme aus, dass Erinnerung selbst eine Form von Evidenz darstellt: in individuellen Erfahrungen,
-        emotionalen Spuren und kollektiver Bedeutungsbildung. Durch eine Analyse von Erinnerungen in Gedächtnissystem, Kodierungsmodalität und Verarbeitungszustand
-        untersucht das Projekt, wie Wahrheit jenseits institutioneller Archive sichtbar wird und welche Verantwortung daraus für die Gesellschaft erwächst.</p>
+      <p data-translate="context-2">
+        Es geht von der Annahme aus, dass Erinnerung selbst eine Form von Evidenz darstellt: in individuellen Erfahrungen, emotionalen Spuren und kollektiver Bedeutungsbildung. Durch eine Analyse von Erinnerungen in Gedächtnissystem, Kodierungsmodalität und Verarbeitungszustand untersucht das Projekt, wie Wahrheit jenseits institutioneller Archive sichtbar wird und welche Verantwortung daraus für die Gesellschaft erwächst.
+      </p>
     </div>
-
-
 
     <div class="script">
-      <div class="step" data-who="left" data-text="Ich habe nur noch die Schreie von meinen
-      Freunden Attila, Tamar und Hasan gehört." data-marker="marker-abdullah"></div>
-      <div class="step" data-who="right" data-text="Es gab zwei Bomben. Die eine, die hatte diese Wucht
-        mit den Nägeln, die da drin waren, und die andere war einfach die Justiz, das System, der Rechtsstaat,
-        der nicht funktioniert hat." data-marker="marker-fr"></div>
-      <div class="step" data-who="left" data-text="Die Wunden sind geheime, ich spüre keine körperlichen
-        Schmerzen mehr, aber die seelischen Schmerzen, die wir erlitten haben. Die sind geblieben!" data-marker="marker-abdullah"></div>
-
+      <div class="step" data-who="left" data-text="Ich habe nur noch die Schreie von meinen Freunden Attila, Tamar und Hasan gehört." data-marker="marker-abdullah"></div>
+      <div class="step" data-who="right" data-text="Es gab zwei Bomben. Die eine, die hatte diese Wucht mit den Nägeln, die da drin waren, und die andere war einfach die Justiz, das System, der Rechtsstaat, der nicht funktioniert hat." data-marker="marker-fr"></div>
+      <div class="step" data-who="left" data-text="Die Wunden sind geheime, ich spüre keine körperlichen Schmerzen mehr, aber die seelischen Schmerzen, die wir erlitten haben. Die sind geblieben!" data-marker="marker-abdullah"></div>
       <div class="step" data-who="right" data-text="Es hat sich nicht viel geändert. Einige Politiker kamen, posierten für Fotos und gingen wieder. Wir sind wieder einsam, aber zumindest keine Verdächtigen mehr" data-marker="marker-fr"></div>
-
       <div class="step" data-who="right" data-text="Ich habe wirklich alle Reportagen satt. Die Leute haben einfach keine Lust, immer das gleiche zu erzählen, denn es geht um Gefühle, und nicht um etwas, das man auswendig gelernt hat" data-marker="marker-fr"></div>
     </div>
-
-
-
-
-
   </section>
+
   <div id="info-panel" class="info-sidebar">
-    <button id="close-btn" class="close-area">CLOSE</button>
+    <button id="close-btn" class="close-area" data-translate="panel-close">CLOSE</button>
     <div class="panel-content">
       <h2 id="p-name">Nombre</h2>
-      <div class="data-row"><strong>Alter:</strong> <span id="p-age">--</span></div>
-      <div class="data-row"><strong>Rolle:</strong> <span id="p-role">--</span></div>
+      <div class="data-row"><strong data-translate="panel-age">Alter:</strong> <span id="p-age">--</span></div>
+      <div class="data-row"><strong data-translate="panel-role">Rolle:</strong> <span id="p-role">--</span></div>
       <hr>
       <p id="p-desc">Información detallada sobre el personaje.</p>
     </div>
-    </div>
   </div>
 
-<section id="mosaic-section">
+  <section id="mosaic-section">
+    <div class="visualContainer">
+      <div class="mosaic-controls">
+        <button id="cycle-criterio" data-translate="mosaic-btn">Change visualization</button>
+        <span id="current-label"><span data-translate="mosaic-label-pre">Seeing: </span><strong id="criterio-text" data-translate="mosaic-crit-default">Presentes en el suceso</strong></span>
 
-  <div class="visualContainer">
+        <div id="mosaic-legend" class="legend-scale">
+          <div class="scale-item"><span class="dot" style="background:rgba(0,255,255,0.28)"></span> 0-20</div>
+          <div class="scale-item"><span class="dot" style="background:#007c80"></span> 21-40</div>
+          <div class="scale-item"><span class="dot" style="background:#ffd700"></span> 41+</div>
+        </div>
+      </div>
 
-  <div class="mosaic-controls">
-    <button id="cycle-criterio">Change visualization</button>
-    <span id="current-label">Seeing: <strong id="criterio-text">Presentes en el suceso</strong></span>
+      <div id="mosaic-grid-container" class="zoomContainer loaded"></div>
 
-    <div id="mosaic-legend" class="legend-scale">
-      <div class="scale-item"><span class="dot" style="background:rgba(0,255,255,0.28)"></span> 0-20</div>
-      <div class="scale-item"><span class="dot" style="background:#007c80"></span> 21-40</div>
-      <div class="scale-item"><span class="dot" style="background:#ffd700"></span> 41+</div>
+      <span class="info-icon">ⓘ</span>
+      <div class="info-popover" data-translate="mosaic-popover">
+        Informationen zu Kategorien und Klassifizierung im Bericht unter „Research“ herunterladen.
+      </div>
     </div>
-  </div>
-
-  <div id="mosaic-grid-container" class="zoomContainer loaded">
-  </div>
-
-    <span class="info-icon">ⓘ</span>
-    <div class="info-popover">
-      Informationen zu Kategorien und Klassifizierung im Bericht unter „Research“ herunterladen.
-    </div>
-
-
-</div>
-
-</section>
-
+  </section>
 
 </div>
 
 <main>
   <section id="research-section" class="content-section">
     <div class="section-container">
-      <h2>01 RESEARCH</h2>
+      <h2 data-translate="title-research">01 RESEARCH</h2>
       <div class="content-body">
-        <p>Diese Forschung sammelt Direktaussagen über den Nagelbombenanschlag von 2004 in Köln. Rekonstruiert wird nicht das Ereignis selbst, sondern das narrative Feld, das es umgibt, und zwar als multiperspektivische Rekonstruktion.
-          Das Projekt zielt darauf ab, den fragmentierten Erinnerungen an die Keupstraße eine Stimme zu geben.
-          Durch ein diskursives Mapping wird analysiert, wie die Wahrnehmung des Attentats sich über mehr als zwei Jahrzehnte im kollektiven Bewusstsein verankert hat.
-          Aus der Perspektive der kognitiven und klinischen Psychologie möchte ich untersuchen, welche Art von Erinnerung sich im Diskurs widerspiegelt.</p>
+        <p data-translate="body-research">
+          Diese Forschung sammelt Direktaussagen über den Nagelbombenanschlag von 2004 in Köln. Rekonstruiert wird nicht das Ereignis selbst, sondern das narrative Feld, das es umgibt, und zwar als multiperspektivische Rekonstruktion. Das Projekt zielt darauf ab, den fragmentierten Erinnerungen an die Keupstraße eine Stimme zu geben. Durch ein diskursives Mapping wird analysiert, wie die Wahrnehmung des Attentats sich über mehr als zwei Jahrzehnte im kollektiven Bewusstsein verankert hat. Aus der Perspektive der kognitiven und klinischen Psychologie möchte ich untersuchen, welche Art von Erinnerung sich im Diskurs widerspiegelt.
+        </p>
 
         <div class="link-group">
-          <a href="report/investigative_report.pdf" class="editorial-link" download="Investigative approach in relation to the 2004 NSU bomb attack in Cologne.pdf" >Bericht herunterladen (PDF)</a>
-          <a href="https://de.wikipedia.org/wiki/Nagelbombenanschlag_in_K%C3%B6ln" class="editorial-link" target="_blank" rel="noopener noreferrer">Über den Anschlag</a>
+          <a href="report/investigative_report.pdf" class="editorial-link" download="Investigative approach in relation to the 2004 NSU bomb attack in Cologne.pdf" data-translate="link-download">Bericht herunterladen (PDF)</a>
+          <a href="https://de.wikipedia.org/wiki/Nagelbombenanschlag_in_K%C3%B6ln" class="editorial-link" target="_blank" rel="noopener noreferrer" data-translate="link-wiki">Über den Anschlag</a>
         </div>
       </div>
     </div>
@@ -418,44 +334,44 @@
 
   <section id="sources-section" class="content-section">
     <div class="section-container">
-      <h2>02 SOURCES</h2>
+      <h2 data-translate="title-sources">02 SOURCES</h2>
       <div class="content-body">
         <div class="link-grid source-grid">
 
           <div class="source-item">
-            <span class="source-tag">Akten</span>
-            <p>Ermittlungsakten des NSU-Prozesses (Untersuchungsunterlagen zum NSU-Verfahren).</p>
-            <a href="https://www.nsu-watch.info/2015/01/protokoll-173-verhandlungstag-12-januar-2015/" target="_blank" class="text-link">Zu den Akten →</a>
+            <span class="source-tag" data-translate="tag-files">Akten</span>
+            <p data-translate="desc-files">Ermittlungsakten des NSU-Prozesses (Untersuchungsunterlagen zum NSU-Verfahren).</p>
+            <a href="https://www.nsu-watch.info/2015/01/protokoll-173-verhandlungstag-12-januar-2015/" target="_blank" class="text-link" data-translate="go-link">Zu den Akten →</a>
           </div>
 
           <div class="source-item">
-            <span class="source-tag">Presse</span>
-            <p>Medienberichterstattung: Zehn Jahre Vorurteile (Der Spiegel).</p>
-            <a href="https://www.spiegel.de/panorama/justiz/zehn-jahre-nach-dem-nsu-anschlag-in-der-koelner-keupstrasse-a-973832.html" target="_blank" class="text-link">Archiv anzeigen →</a>
+            <span class="source-tag" data-translate="tag-press">Presse</span>
+            <p data-translate="desc-press">Medienberichterstattung: Zehn Jahre Vorurteile (Der Spiegel).</p>
+            <a href="https://www.spiegel.de/panorama/justiz/zehn-jahre-nach-dem-nsu-anschlag-in-der-koelner-keupstrasse-a-973832.html" target="_blank" class="text-link" data-translate="view-archive">Archiv anzeigen →</a>
           </div>
 
           <div class="source-item">
-            <span class="source-tag">Interviews</span>
-            <p>Direkte Gespräche mit Betroffenen, Ermittlern und Experten.</p>
-            <a href="https://www.amadeu-antonio-stiftung.de/publikationen/von-mauerfall-bis-nagelbombe/" target="_blank" class="text-link">Interview-Transkripte →</a>
+            <span class="source-tag" data-translate="tag-interviews">Interviews</span>
+            <p data-translate="desc-interviews">Direkte Gespräche mit Betroffenen, Ermittlern und Experten.</p>
+            <a href="https://www.amadeu-antonio-stiftung.de/publikationen/von-mauerfall-bis-nagelbombe/" target="_blank" class="text-link" data-translate="view-transcripts">Interview-Transkripte →</a>
           </div>
 
           <div class="source-item">
-            <span class="source-tag">Video</span>
-            <p>Dokumentation: "Der Kuaför aus der Keupstraße" (Film-Archiv).</p>
-            <a href="https://www.bpb.de/mediathek/video/548820/der-kuafoer-aus-der-keupstrasse/" target="_blank" class="text-link">Zum Video →</a>
+            <span class="source-tag" data-translate="tag-video">Video</span>
+            <p data-translate="desc-video">Dokumentation: "Der Kuaför aus der Keupstraße" (Film-Archiv).</p>
+            <a href="https://www.bpb.de/mediathek/video/548820/der-kuafoer-aus-der-keupstrasse/" target="_blank" class="text-link" data-translate="go-video">Zum Video →</a>
           </div>
 
           <div class="source-item">
-            <span class="source-tag">Archiv</span>
-            <p>Dokumentationszentrum und Museum über die Migration in Deutschland (DOMiD).</p>
-            <a href="https://domid.org/news/presse/architektur-so-soll-das-migrationsmuseum-in-koeln-aussehen/" target="_blank" class="text-link">Datenbank öffnen →</a>
+            <span class="source-tag" data-translate="tag-archive">Archiv</span>
+            <p data-translate="desc-archive">Dokumentationszentrum und Museum über die Migration in Deutschland (DOMiD).</p>
+            <a href="https://domid.org/news/presse/architektur-so-soll-das-migrationsmuseum-in-koeln-aussehen/" target="_blank" class="text-link" data-translate="open-db">Datenbank öffnen →</a>
           </div>
 
           <div class="source-item">
-            <span class="source-tag">Statistik</span>
-            <p>Landesdatenbank NRW: Statistik und Demografie Köln-Mülheim.</p>
-            <a href="https://www.landesdatenbank.nrw.de/ldbnrw/online" target="_blank" class="text-link">Statistiken einsehen →</a>
+            <span class="source-tag" data-translate="tag-stats">Statistik</span>
+            <p data-translate="desc-stats">Landesdatenbank NRW: Statistik und Demografie Köln-Mülheim.</p>
+            <a href="https://www.landesdatenbank.nrw.de/ldbnrw/online" target="_blank" class="text-link" data-translate="view-stats">Statistiken einsehen →</a>
           </div>
 
         </div>
@@ -465,30 +381,20 @@
 
   <section id="orgs-section" class="content-section">
     <div class="section-container">
-      <h2>03 ORGANIZATIONS</h2>
+      <h2 data-translate="title-orgs">03 ORGANIZATIONS</h2>
       <div class="content-body">
         <ul class="org-list">
           <li>
-            <strong>Keupstraße ist überall</strong> — Solidaritätsbündnis aus Betroffenen und Zivilgesellschaft.
-            <a href="https://www.keupstrasse-ist-ueberall.de/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="icon-link">🌐</a>
+            <strong data-translate="org-1-title">Keupstraße ist überall</strong> <span data-translate="org-1-desc">— Solidaritätsbündnis aus Betroffenen und Zivilgesellschaft.</span>
+            <a href="https://www.keupstrasse-ist-ueberall.de/" target="_blank" rel="noopener noreferrer" class="icon-link">🌐</a>
           </li>
           <li>
-            <strong>Geschichtswerkstatt Mülheim</strong> — Forschungsgruppe zur Dokumentation
-            der Stadtteilgeschichte in Mülheim.
-            <a href="https://www.geschichtswerkstatt-muelheim.de/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="icon-link">🌐</a>
+            <strong data-translate="org-2-title">Geschichtswerkstatt Mülheim</strong> <span data-translate="org-2-desc">— Forschungsgruppe zur Dokumentation der Stadtteilgeschichte in Mülheim.</span>
+            <a href="https://www.geschichtswerkstatt-muelheim.de/" target="_blank" rel="noopener noreferrer" class="icon-link">🌐</a>
           </li>
           <li>
-            <strong>NSU Watch</strong> — Beobachtungsstelle für rechtsextreme Straftaten.
-            <a href="https://www.nsu-watch.info/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="icon-link">🌐</a>
+            <strong data-translate="org-3-title">NSU Watch</strong> <span data-translate="org-3-desc">— Beobachtungsstelle für rechtsextreme Straftaten.</span>
+            <a href="https://www.nsu-watch.info/" target="_blank" rel="noopener noreferrer" class="icon-link">🌐</a>
           </li>
         </ul>
       </div>
@@ -497,17 +403,17 @@
 
   <section id="about-section" class="content-section">
     <div class="section-container">
-      <h2>04 ABOUT</h2>
+      <h2 data-translate="title-about">04 ABOUT</h2>
       <div class="content-body">
-        <p>Als Psychologin an der Schnittstelle zur Programmierung entwickle ich analytische Ansätze für die Aufarbeitung komplexer Fragestellungen. Das vorliegende Projekt ist ein Forschungsvorhaben aus meinem Studium (<a href="https://coco.study/" target="_blank" rel="noopener noreferrer" class="stealth-link">Code & Context</a>) in Zusammenarbeit mit der <a href="https://www.keupstrasse-ist-ueberall.de/" target="_blank" rel="noopener noreferrer" class="stealth-link">Initiative Keupstraße ist überall</a>, das die Auseinandersetzung mit aktuellen gesellschaftlichen Problematiken thematisiert. Dieser Fokus bildete die Grundlage für die Verbindung zwischen technischer digitaler Umsetzung und psychologischer Forschung.</p>
+        <p data-translate="body-about">
+          Als Psychologin an der Schnittstelle zur Programmierung entwickle ich analytische Ansätze für die Aufarbeitung komplexer Fragestellungen. Das vorliegende Projekt ist ein Forschungsvorhaben aus meinem Studium (<a href="https://coco.study/" target="_blank" rel="noopener noreferrer" class="stealth-link">Code & Context</a>) in Zusammenarbeit mit der <a href="https://www.keupstrasse-ist-ueberall.de/" target="_blank" rel="noopener noreferrer" class="stealth-link">Initiative Keupstraße ist überall</a>, das die Auseinandersetzung mit aktuellen gesellschaftlichen Problematiken thematisiert. Dieser Fokus bildete die Grundlage für die Verbindung zwischen technischer digitaler Umsetzung und psychologischer Forschung.
+        </p>
         <div class="credits">
-          <p>Design und Entwicklung: <strong>Raffaella Lanza Buguenõ  </strong></p>
+          <p><span data-translate="credits-dev">Design und Entwicklung: </span><strong>Raffaella Lanza Bugueño</strong></p>
           <p class="contact-info">
-            Kontakt: <em>rlanzabu@proton.me</em>
+            <span data-translate="credits-contact">Kontakt: </span><em>rlanzabu@proton.me</em>
             <span class="separator">|</span>
-            <a href="https://www.linkedin.com/in/raffaella-lanza-bugue%C3%B1o-a44791107/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-              LinkedIn ↗
-            </a>
+            <a href="https://www.linkedin.com/in/raffaella-lanza-bugue%C3%B1o-a44791107/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn ↗</a>
           </p>
         </div>
       </div>
@@ -522,29 +428,31 @@
   </div>
 
   <div class="path-labels">
-    <span class="location" style="left: 0%;">Keupstr. Anfang (Nr. 1–40)</span>
-    <span class="location" style="left: 25%;">Herz (Nr. 40–100)</span>
-    <span class="location" style="left: 50%;">107 Geschäfte</span>
-    <span class="location" style="left: 75%;">890 Meter lang</span>
-    <span class="location" style="left: 100%;">Übergang (ab Nr. 100)</span>
+    <span class="location" style="left: 0%;" data-translate="path-l1">Keupstr. Anfang (Nr. 1–40)</span>
+    <span class="location" style="left: 25%;" data-translate="path-l2">Herz (Nr. 40–100)</span>
+    <span class="location" style="left: 50%;" data-translate="path-l3">107 Geschäfte</span>
+    <span class="location" style="left: 75%;" data-translate="path-l4">890 Meter lang</span>
+    <span class="location" style="left: 100%;" data-translate="path-l5">Übergang (ab Nr. 100)</span>
   </div>
 </nav>
 
 <footer class="site-disclaimer">
   <div class="section-container">
-    <p>
-      <strong>HINWEIS:</strong> Dieses Projekt befindet sich in einem kontinuierlichen Prozess.
-      Die Analysen werden laufend ergänzt, während neue Daten erschlossen werden.
-      Der aktuelle Stand stellt keine abschließende Auswertung dar.
+    <p data-translate="footer-disclaimer">
+      <strong>HINWEIS:</strong> Dieses Projekt befindet sich in einem kontinuierlichen Prozess. Die Analysen werden laufend ergänzt, während neue Daten erschlossen werden. Der aktuelle Stand stellt keine abschließende Auswertung dar.
     </p>
 
     <p class="license-text">
       © 2026 Raffaella Lanza Bugueño
       <span class="separator">|</span>
-      Content licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>
+      <span data-translate="footer-license-pre">Content licensed under </span><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>
     </p>
   </div>
 </footer>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

@@ -3,4 +3,12 @@
 
 # Ignore macOS system files
 .DS_Store
+Thumbs.db
 
+# Dependencias de Node (No se suben nunca)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
